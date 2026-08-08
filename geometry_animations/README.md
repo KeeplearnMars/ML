@@ -41,3 +41,9 @@ python3 anim_circle_inside.py --side 10 --r 2
 * `common.py` — 画布、中文字体（用仓库根目录的 `ChineseFont.ttf`）、配色、GIF 输出
 * `anim_rect_roll.py` / `anim_triangle_rotate.py` / `anim_circle_outside.py` / `anim_circle_inside.py`
 * `gifs/` — 生成结果
+
+## 网页版
+
+`python3 build_page.py` 会把 7 个 GIF 打包成一个单文件网页 `index.html`
+（图片用 base64 内嵌，直接用浏览器打开就能看，不需要联网）。
+生成的 `index.html` 有 5MB 左右，没有提交进仓库。
