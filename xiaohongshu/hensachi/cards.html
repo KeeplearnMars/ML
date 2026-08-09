@@ -1,0 +1,578 @@
+<title>偏差值到底怎么看｜数学老师版 · 小红书图卡</title>
+<style>
+/* ── tokens ───────────────────────────────────────────────── */
+:root{
+  --paper:#EDF0EA;          /* 方眼紙：冷绿偏的纸 */
+  --paper-hi:#F6F8F3;
+  --ground:#E2E6DE;
+  --ink:#17212B;
+  --ink-2:#556170;
+  --ink-3:#818C93;
+  --grid:#CFD9CD;
+  --rule:#BCC6BA;
+  --shu:#BF3D2B;            /* 朱：红笔 */
+  --shu-wash:rgba(191,61,43,.10);
+  --ai:#2B5A85;             /* 藍：曲线 */
+  --ai-2:#4E80AC;
+  --ai-wash:rgba(43,90,133,.14);
+  --shadow:0 1px 2px rgba(23,33,43,.06),0 12px 34px rgba(23,33,43,.10);
+
+  --sans:"PingFang SC","Hiragino Sans GB","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Hiragino Mincho ProN","Yu Mincho","Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#171C1A; --paper-hi:#1E2422; --ground:#101413;
+    --ink:#E7EBE4; --ink-2:#A2ADA4; --ink-3:#7B857C;
+    --grid:#28302D; --rule:#333B37;
+    --shu:#E4735C; --shu-wash:rgba(228,115,92,.14);
+    --ai:#84AED2; --ai-2:#628CB0; --ai-wash:rgba(132,174,210,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#171C1A; --paper-hi:#1E2422; --ground:#101413;
+  --ink:#E7EBE4; --ink-2:#A2ADA4; --ink-3:#7B857C;
+  --grid:#28302D; --rule:#333B37;
+  --shu:#E4735C; --shu-wash:rgba(228,115,92,.14);
+  --ai:#84AED2; --ai-2:#628CB0; --ai-wash:rgba(132,174,210,.16);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); -webkit-font-smoothing:antialiased;
+  font-feature-settings:"tnum" off;
+}
+.wrap{max-width:1160px;margin:0 auto;padding:clamp(24px,5vw,64px) clamp(16px,4vw,40px) 96px;}
+
+/* ── page header ──────────────────────────────────────────── */
+.masthead{border-bottom:1px solid var(--rule);padding-bottom:22px;margin-bottom:34px;}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
+.masthead h1{font-size:clamp(26px,4.6vw,40px);line-height:1.24;margin:.36em 0 .3em;font-weight:800;letter-spacing:-.01em;text-wrap:balance;}
+.masthead p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.75;max-width:62ch;}
+.masthead em{font-family:var(--serif);font-style:normal;color:var(--ink);}
+
+/* ── card deck ────────────────────────────────────────────── */
+.deck{display:grid;gap:clamp(18px,3vw,30px);grid-template-columns:repeat(auto-fill,minmax(288px,1fr));}
+.deck.solo{grid-template-columns:minmax(0,1080px);justify-content:center;}
+.viewbar{display:flex;align-items:center;gap:12px;margin:-14px 0 22px;}
+.viewbar span{font-size:13px;color:var(--ink-3);line-height:1.5;}
+.ghost{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:transparent;
+  border:1px solid var(--rule);border-radius:6px;padding:7px 14px;cursor:pointer;white-space:nowrap;}
+.ghost:hover{border-color:var(--ai);color:var(--ai);}
+.ghost:focus-visible{outline:2px solid var(--shu);outline-offset:2px;}
+.card{
+  container-type:inline-size;
+  position:relative;aspect-ratio:3/4;overflow:hidden;
+  background:var(--paper);border-radius:10px;box-shadow:var(--shadow);
+  isolation:isolate;
+}
+.card::before{ /* 方眼紙 */
+  content:"";position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;
+  background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),
+                   linear-gradient(to bottom,var(--grid) 1px,transparent 1px);
+  background-size:5cqw 5cqw;
+}
+.sheet{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:7cqw 6.5cqw 6cqw;}
+
+/* eyebrow strip */
+.slug{display:flex;align-items:baseline;justify-content:space-between;gap:2cqw;
+  border-bottom:1px solid var(--rule);padding-bottom:2.4cqw;margin-bottom:5cqw;}
+.slug .jp{font-family:var(--serif);font-size:3.5cqw;letter-spacing:.1em;color:var(--ink-2);}
+.slug .no{font-family:var(--mono);font-size:3.1cqw;letter-spacing:.1em;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+
+.h{font-size:7.6cqw;line-height:1.28;font-weight:800;letter-spacing:-.015em;margin:0;text-wrap:balance;}
+.h-sm{font-size:6.4cqw;line-height:1.3;font-weight:800;margin:0;text-wrap:balance;}
+.lede{font-size:3.9cqw;line-height:1.72;color:var(--ink-2);margin:0;}
+.body{font-size:3.7cqw;line-height:1.78;color:var(--ink-2);margin:0;}
+.body b,.lede b{color:var(--ink);font-weight:700;}
+.red{color:var(--shu);}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+.grow{flex:1;min-height:0;}
+.stack{display:flex;flex-direction:column;}
+.foot{border-top:1px solid var(--rule);padding-top:3cqw;font-size:3.1cqw;line-height:1.6;color:var(--ink-3);font-family:var(--serif);letter-spacing:.04em;}
+
+/* ── card 01 cover ────────────────────────────────────────── */
+.cover .title{font-size:16cqw;line-height:1.02;font-weight:800;letter-spacing:-.03em;}
+.cover .title span{display:block;font-size:8cqw;letter-spacing:.02em;margin-top:1.6cqw;}
+.fix{display:flex;align-items:baseline;gap:4.5cqw;margin-top:1cqw;}
+.fix .old{position:relative;font-family:var(--mono);font-size:6.4cqw;color:var(--ink-3);}
+.fix .old::after{content:"";position:absolute;left:-3%;right:-3%;top:40%;height:.5cqw;background:var(--shu);transform:rotate(-4.5deg);}
+.fix .new{font-family:var(--mono);font-size:7.6cqw;color:var(--shu);font-weight:700;transform:rotate(-2.2deg);}
+.chips{display:flex;flex-wrap:wrap;gap:1.8cqw;}
+.chip{font-family:var(--serif);font-size:3.1cqw;letter-spacing:.06em;color:var(--ink-2);
+  border:1px solid var(--rule);border-radius:100px;padding:1.1cqw 3cqw;background:var(--paper-hi);}
+.stamp{position:absolute;right:6cqw;top:15cqw;width:19cqw;height:19cqw;transform:rotate(-13deg);opacity:.9;}
+
+/* ── formula (card 02) ────────────────────────────────────── */
+.formula{background:var(--paper-hi);border:1px solid var(--rule);border-radius:2cqw;padding:5cqw 4cqw;text-align:center;}
+.formula .eq{font-family:var(--mono);font-size:5.1cqw;line-height:1.5;color:var(--ink);font-variant-numeric:tabular-nums;}
+.formula .eq u{text-decoration:none;color:var(--shu);border-bottom:.4cqw solid var(--shu-wash);}
+.formula .cap{font-family:var(--serif);font-size:3.1cqw;color:var(--ink-3);margin-top:2.4cqw;letter-spacing:.06em;}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;}
+.trio>div{border:1px solid var(--rule);border-radius:1.6cqw;padding:2.6cqw 1cqw;text-align:center;background:var(--paper-hi);}
+.trio .n{font-family:var(--mono);font-size:6.4cqw;font-weight:700;line-height:1;}
+.trio .t{font-size:2.9cqw;color:var(--ink-3);margin-top:1.4cqw;}
+
+/* ── curve (card 03) ──────────────────────────────────────── */
+.figure{width:100%;}
+.figure svg{width:100%;height:auto;display:block;}
+.wrongnote{display:flex;gap:2.4cqw;align-items:flex-start;font-size:3.2cqw;line-height:1.6;color:var(--ink-2);}
+.wrongnote .tag{flex:none;font-family:var(--mono);font-size:2.8cqw;letter-spacing:.08em;color:var(--shu);
+  border:1px solid var(--shu);border-radius:.8cqw;padding:.4cqw 1.4cqw;margin-top:.4cqw;}
+
+/* ── table (card 04) ──────────────────────────────────────── */
+table.rank{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
+table.rank th{font-size:2.8cqw;font-weight:500;color:var(--ink-3);text-align:right;padding:0 0 1.6cqw;border-bottom:1px solid var(--rule);letter-spacing:.04em;}
+table.rank th:first-child{text-align:left;}
+table.rank td{font-family:var(--mono);font-size:3.6cqw;line-height:1.2;padding:1.55cqw 0;text-align:right;border-bottom:1px solid var(--grid);color:var(--ink-2);}
+table.rank td:first-child{text-align:left;font-size:4.1cqw;font-weight:700;color:var(--ink);}
+table.rank tr.key td{color:var(--shu);}
+table.rank tr.key td:first-child{color:var(--shu);}
+table.rank tr:last-child td{border-bottom:none;}
+
+/* ── proportion bars (cards 05 / 07) ──────────────────────── */
+.bars{display:flex;flex-direction:column;gap:2.8cqw;}
+.bar-row{display:grid;grid-template-columns:8cqw 1fr 21cqw;align-items:center;gap:2.4cqw;}
+.bar-row .lab{font-family:var(--mono);font-size:3.8cqw;font-weight:700;font-variant-numeric:tabular-nums;}
+.bar-row .lab.w{font-family:var(--sans);font-size:3.4cqw;font-weight:700;}
+.track{display:block;height:3.6cqw;background:var(--paper-hi);border:1px solid var(--rule);border-radius:.6cqw;overflow:hidden;}
+.fill{display:block;height:100%;background:var(--ai);border-radius:0 .5cqw .5cqw 0;}
+.bar-row .val{font-family:var(--mono);font-size:3.2cqw;color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:right;}
+.bar-row .val em{font-style:normal;color:var(--shu);}
+.wide .bar-row{grid-template-columns:19cqw 1fr 19cqw;}
+
+/* ── numbers row (card 08) ────────────────────────────────── */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;}
+.three .cell{border:1px solid var(--rule);border-radius:1.6cqw;background:var(--paper-hi);padding:3cqw 1.4cqw;text-align:center;}
+.three .cell .src{font-family:var(--serif);font-size:2.9cqw;color:var(--ink-2);letter-spacing:.04em;height:6.4cqw;display:flex;align-items:center;justify-content:center;line-height:1.25;}
+.three .cell .v{font-family:var(--mono);font-size:8.4cqw;font-weight:700;line-height:1;margin-top:1.2cqw;}
+.three .cell.hi{border-color:var(--shu);background:var(--shu-wash);}
+.three .cell.hi .v{color:var(--shu);}
+.eqline{text-align:center;font-family:var(--mono);font-size:3.5cqw;color:var(--ink-2);
+  background:var(--paper-hi);border:1px solid var(--rule);border-radius:1.4cqw;padding:2.6cqw 2cqw;line-height:1.6;}
+
+/* ── ratio bar (card 09) ──────────────────────────────────── */
+.ratio{display:flex;height:9cqw;border-radius:1.2cqw;overflow:hidden;border:1px solid var(--rule);}
+.ratio>div{display:flex;align-items:center;justify-content:center;font-size:3.2cqw;font-weight:700;}
+.ratio .a{flex:7;background:var(--ai);color:var(--paper);}
+.ratio .b{flex:3;background:var(--shu);color:var(--paper);}
+:root[data-theme="dark"] .ratio .a,:root[data-theme="dark"] .ratio .b{color:var(--ground);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ratio .a,
+ :root:not([data-theme="light"]) .ratio .b{color:var(--ground);}}
+
+/* ── scale (card 10) ──────────────────────────────────────── */
+.scale{display:flex;flex-direction:column;gap:3.4cqw;}
+.scale-row .name{display:flex;justify-content:space-between;align-items:baseline;font-size:3.3cqw;color:var(--ink-2);margin-bottom:1.4cqw;}
+.scale-row .name b{color:var(--ink);font-size:3.6cqw;}
+.scale-row .name .num{font-family:var(--mono);color:var(--shu);font-weight:700;font-size:4.2cqw;}
+.axis{position:relative;height:3cqw;border-radius:.6cqw;background:linear-gradient(90deg,var(--ai-wash),var(--ai-wash));border:1px solid var(--rule);}
+.axis i{position:absolute;top:-1.3cqw;width:1.5cqw;height:5.6cqw;border-radius:.4cqw;background:var(--shu);transform:translateX(-50%);}
+.axis-ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:2.7cqw;color:var(--ink-3);margin-top:1cqw;}
+
+/* ── judgement (card 11) ──────────────────────────────────── */
+.judge{display:flex;gap:1.6cqw;}
+.judge>div{flex:1;text-align:center;border:1px solid var(--rule);border-radius:1.2cqw;padding:2.4cqw .6cqw;background:var(--paper-hi);}
+.judge .g{font-family:var(--mono);font-size:5.2cqw;font-weight:700;line-height:1;}
+.judge .p{font-family:var(--mono);font-size:2.9cqw;color:var(--ink-2);margin-top:1cqw;}
+.judge>div:first-child{border-color:var(--ai);}
+.judge>div:last-child{border-color:var(--shu);}
+.judge>div:last-child .g{color:var(--shu);}
+ol.tips{margin:0;padding-left:4.6cqw;font-size:3.5cqw;line-height:1.72;color:var(--ink-2);}
+ol.tips li{margin-bottom:1.6cqw;}
+ol.tips li::marker{color:var(--shu);font-family:var(--mono);font-weight:700;}
+ol.tips b{color:var(--ink);}
+ul.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2.2cqw;}
+ul.plain li{font-size:3.5cqw;line-height:1.66;color:var(--ink-2);padding-left:4.4cqw;position:relative;}
+ul.plain li::before{content:"×";position:absolute;left:0;top:0;color:var(--shu);font-family:var(--mono);font-weight:700;}
+ul.plain li b{color:var(--ink);}
+
+/* ── caption section ──────────────────────────────────────── */
+.caption{margin-top:72px;border-top:1px solid var(--rule);padding-top:34px;}
+.caption h2{font-size:20px;font-weight:800;margin:0 0 6px;}
+.caption .hint{font-size:13.5px;color:var(--ink-3);margin:0 0 20px;line-height:1.6;}
+.copy{font:inherit;font-size:13px;font-weight:600;color:var(--paper);background:var(--ink);border:none;
+  border-radius:6px;padding:9px 16px;cursor:pointer;letter-spacing:.02em;}
+.copy:hover{background:var(--ai);}
+.copy:focus-visible{outline:2px solid var(--shu);outline-offset:2px;}
+.script{margin-top:22px;background:var(--paper);border:1px solid var(--rule);border-radius:8px;
+  padding:clamp(20px,3.4vw,34px);max-width:66ch;font-size:15px;line-height:1.9;color:var(--ink-2);white-space:pre-wrap;}
+.script b{color:var(--ink);}
+.tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+.tags span{font-size:13px;color:var(--ai);background:var(--ai-wash);border-radius:100px;padding:5px 12px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">Xiaohongshu carousel · 11 cards · 3:4</div>
+    <h1>偏差值到底怎么看｜数学老师一次讲透</h1>
+    <p>逐张截图即可发布。每张卡是 3:4，文字按卡宽等比缩放，放大缩小都不会跑版。<em>朱色</em>只用在「这一张要记住的那个数字」上。正文与话题标签在页面底部，可一键复制。</p>
+  </header>
+
+  <div class="viewbar">
+    <button class="ghost" type="button" id="soloBtn">切换到单张大图</button>
+    <span>截图前切到单张大图，导出分辨率更高（小红书建议 1080×1440）。</span>
+  </div>
+
+  <div class="deck" id="deck">
+
+    <!-- 01 封面 -->
+    <article class="card cover">
+      <div class="sheet">
+        <div class="slug"><span class="jp">数学教師の偏差値講座</span><span class="no">01 / 11</span></div>
+        <svg class="stamp" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="var(--shu)" stroke-width="3"/>
+          <circle cx="50" cy="50" r="39" fill="none" stroke="var(--shu)" stroke-width="1.5"/>
+          <text x="50" y="43" text-anchor="middle" fill="var(--shu)" font-size="26" font-family="var(--serif)" font-weight="700">保存</text>
+          <text x="50" y="70" text-anchor="middle" fill="var(--shu)" font-size="26" font-family="var(--serif)" font-weight="700">版</text>
+        </svg>
+        <div class="grow stack" style="justify-content:center;gap:4cqw;">
+          <div class="title">偏差值<span>到底怎么看</span></div>
+          <p class="lede" style="max-width:78%;">网传的那张正态分布图，<b>有一个数字是错的</b>。<br>今天从公式讲到实操。</p>
+          <div class="fix"><span class="old">18.6%</span><span class="new">13.59%</span></div>
+        </div>
+        <div class="chips">
+          <span class="chip">中学受験</span><span class="chip">高校受験</span>
+          <span class="chip">大学受験</span><span class="chip">塾内考 vs 公開模試</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 公式 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">偏差値の定義</span><span class="no">02 / 11</span></div>
+        <h2 class="h">它不是分数<br>是一个坐标</h2>
+        <div class="grow stack" style="justify-content:center;gap:4.4cqw;">
+          <div class="formula">
+            <div class="eq">偏差值 = 50 + 10 × <u>(你的分 − 平均分) ÷ 标准差</u></div>
+            <div class="cap">下划线部分＝统计里的 z 分数</div>
+          </div>
+          <div class="trio">
+            <div><div class="n">50</div><div class="t">正好平均</div></div>
+            <div><div class="n">60</div><div class="t">高 1 个标准差</div></div>
+            <div><div class="n">70</div><div class="t">高 2 个标准差</div></div>
+          </div>
+        </div>
+        <p class="body">这是<b>线性变换</b>：不改变任何人的名次，只换了一把刻度尺。<br>智商测验用 100+15z，所以 <b>IQ 130 和偏差值 70 是同一个位置</b>。</p>
+      </div>
+    </article>
+
+    <!-- 03 更正 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">正規分布のわけ方</span><span class="no">03 / 11</span></div>
+        <h2 class="h-sm">网传那张图，<span class="red">算错了</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:3cqw;">
+          <div class="figure">
+            <svg viewBox="0 -14 720 372" role="img" aria-label="标准正态分布各区间占比：0到1σ 34.13%，1到2σ 13.59%，2到3σ 2.14%，3σ以外 0.13%">
+              <defs>
+                <clipPath id="bell"><path d="M0.0,299.6 L60,296.8 L110,287.4 L160,261.3 L210,207.1 L260,126.5 L310,47.6 L360,14.0 L410,47.6 L460,126.5 L510,207.1 L560,261.3 L610,287.4 L660,296.8 L720,299.6 L720,300 L0,300 Z"/></clipPath>
+              </defs>
+              <g clip-path="url(#bell)">
+                <rect x="0"   y="0" width="60"  height="300" fill="var(--ai)" opacity=".06"/>
+                <rect x="60"  y="0" width="100" height="300" fill="var(--ai)" opacity=".14"/>
+                <rect x="160" y="0" width="100" height="300" fill="var(--ai)" opacity=".28"/>
+                <rect x="260" y="0" width="100" height="300" fill="var(--ai)" opacity=".48"/>
+                <rect x="360" y="0" width="100" height="300" fill="var(--ai)" opacity=".48"/>
+                <rect x="460" y="0" width="100" height="300" fill="var(--ai)" opacity=".28"/>
+                <rect x="560" y="0" width="100" height="300" fill="var(--ai)" opacity=".14"/>
+                <rect x="660" y="0" width="60"  height="300" fill="var(--ai)" opacity=".06"/>
+              </g>
+              <g stroke="var(--rule)" stroke-width="1" stroke-dasharray="3 4">
+                <line x1="60"  y1="296.8" x2="60"  y2="300"/><line x1="160" y1="261.3" x2="160" y2="300"/>
+                <line x1="260" y1="126.5" x2="260" y2="300"/><line x1="360" y1="14"    x2="360" y2="300"/>
+                <line x1="460" y1="126.5" x2="460" y2="300"/><line x1="560" y1="261.3" x2="560" y2="300"/>
+                <line x1="660" y1="296.8" x2="660" y2="300"/>
+              </g>
+              <path fill="none" stroke="var(--ai)" stroke-width="2.5" stroke-linejoin="round"
+                d="M0.0,299.6 L20.0,299.1 L40.0,298.3 L60.0,296.8 L80.0,294.3 L100.0,290.3 L120.0,283.9 L140.0,274.6 L160.0,261.3 L180.0,243.4 L200.0,220.5 L220.0,192.7 L240.0,160.8 L260.0,126.5 L280.0,92.3 L300.0,61.1 L320.0,36.0 L340.0,19.7 L360.0,14.0 L380.0,19.7 L400.0,36.0 L420.0,61.1 L440.0,92.3 L460.0,126.5 L480.0,160.8 L500.0,192.7 L520.0,220.5 L540.0,243.4 L560.0,261.3 L580.0,274.6 L600.0,283.9 L620.0,290.3 L640.0,294.3 L660.0,296.8 L680.0,298.3 L700.0,299.1 L720.0,299.6"/>
+              <line x1="0" y1="300" x2="720" y2="300" stroke="var(--ink-3)" stroke-width="1.5"/>
+              <g font-family="var(--mono)" font-size="21">
+                <text x="310" y="215" text-anchor="middle" fill="var(--ink)">34.13%</text>
+                <text x="410" y="215" text-anchor="middle" fill="var(--ink)">34.13%</text>
+                <text x="210" y="286" text-anchor="middle" fill="var(--shu)" font-weight="700">13.59%</text>
+                <text x="510" y="286" text-anchor="middle" fill="var(--shu)" font-weight="700">13.59%</text>
+                <text x="110" y="272" text-anchor="middle" fill="var(--ink-2)" font-size="17">2.14%</text>
+                <text x="610" y="272" text-anchor="middle" fill="var(--ink-2)" font-size="17">2.14%</text>
+              </g>
+              <g font-family="var(--mono)" font-size="20" fill="var(--ink-2)" text-anchor="middle">
+                <text x="60"  y="330">20</text><text x="160" y="330">30</text><text x="260" y="330">40</text>
+                <text x="360" y="330">50</text>
+                <text x="460" y="330">60</text><text x="560" y="330">70</text><text x="660" y="330">80</text>
+              </g>
+              <g font-family="var(--serif)" font-size="19" fill="var(--ink-3)" text-anchor="middle">
+                <text x="360" y="358">偏差值（平均 50，一个标准差 10）</text>
+              </g>
+            </svg>
+          </div>
+          <div class="wrongnote"><span class="tag">訂正</span>
+            <span>1σ~2σ 是 <b class="red">13.59%</b>，不是 18.6%。原图那个 2.3% 也不对——2.3% 是「2σ 以外」的<b>累计值</b>，被当成单个区间标上去了。</span></div>
+        </div>
+        <p class="body">13.59 ＋ 2.14 ＋ 0.13 ＝ <b class="mono">15.87%</b>，正好是「偏差值 60 以上」的人数比例。</p>
+      </div>
+    </article>
+
+    <!-- 04 对照表 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">偏差値と順位</span><span class="no">04 / 11</span></div>
+        <h2 class="h-sm">偏差值 ↔ 你排第几</h2>
+        <div class="grow stack" style="justify-content:center;padding:3cqw 0;">
+          <table class="rank">
+            <thead><tr><th>偏差值</th><th>处在前</th><th>相当于</th></tr></thead>
+            <tbody>
+              <tr><td>80</td><td>0.13%</td><td>741 人中第 1</td></tr>
+              <tr><td>75</td><td>0.62%</td><td>161 人中第 1</td></tr>
+              <tr class="key"><td>70</td><td>2.28%</td><td>44 人中第 1</td></tr>
+              <tr><td>65</td><td>6.68%</td><td>15 人中第 1</td></tr>
+              <tr><td>60</td><td>15.87%</td><td>6.3 人中第 1</td></tr>
+              <tr><td>55</td><td>30.85%</td><td>3.2 人中第 1</td></tr>
+              <tr><td>50</td><td>50.00%</td><td>正中间</td></tr>
+              <tr><td>45</td><td>69.15%</td><td>—</td></tr>
+              <tr><td>40</td><td>84.13%</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="body">一个 40 人的班：<b>60 ≈ 第 6 名，65 ≈ 第 3 名，70 ≈ 第 1 名</b>。</p>
+      </div>
+    </article>
+
+    <!-- 05 每+5 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">上位の薄さ</span><span class="no">05 / 11</span></div>
+        <h2 class="h-sm">每 +5，<span class="red">你前面的人少一半</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:4cqw;">
+          <div class="bars">
+            <div class="bar-row"><span class="lab">50</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">50.0%</span></div>
+            <div class="bar-row"><span class="lab">55</span><span class="track"><span class="fill" style="width:61.7%"></span></span><span class="val">30.9% <em>×.62</em></span></div>
+            <div class="bar-row"><span class="lab">60</span><span class="track"><span class="fill" style="width:31.7%"></span></span><span class="val">15.9% <em>×.51</em></span></div>
+            <div class="bar-row"><span class="lab">65</span><span class="track"><span class="fill" style="width:13.4%"></span></span><span class="val">6.7% <em>×.42</em></span></div>
+            <div class="bar-row"><span class="lab">70</span><span class="track"><span class="fill" style="width:4.6%"></span></span><span class="val">2.3% <em>×.34</em></span></div>
+            <div class="bar-row"><span class="lab">75</span><span class="track"><span class="fill" style="width:1.2%"></span></span><span class="val">0.6% <em>×.27</em></span></div>
+          </div>
+          <p class="body">条形＝还排在你<b>前面</b>的人所占比例。</p>
+        </div>
+        <p class="body"><b>「从 50 到 55」和「从 65 到 70」不是同一件事。</b><br>起点越高，要挤掉的比例越狠，而且要挤掉的人越强——别用同一套时间表要求孩子。</p>
+      </div>
+    </article>
+
+    <!-- 06 母体 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">母集団という分母</span><span class="no">06 / 11</span></div>
+        <h2 class="h">偏差值有一个<br>隐藏的分母</h2>
+        <div class="grow stack" style="justify-content:center;gap:4.4cqw;">
+          <div class="formula" style="padding:6cqw 4cqw;">
+            <div class="eq" style="font-size:9cqw;font-weight:700;color:var(--shu);">母体</div>
+            <div class="cap" style="font-size:3.4cqw;">母集団＝一起参加这场考试的人</div>
+          </div>
+          <ul class="plain">
+            <li>同一所学校，<b>不同塾公布的偏差值不一样</b></li>
+            <li>校内考的偏差值，<b>不能和全国模考比</b></li>
+            <li>中学 / 高校 / 大学受験，<b>更不能横着比</b></li>
+          </ul>
+        </div>
+        <p class="body">偏差值永远是相对「某一群人」算出来的。<br><b>离开这群人，这个数字没有意义。</b></p>
+      </div>
+    </article>
+
+    <!-- 07 三个学段 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">三つのものさし</span><span class="no">07 / 11</span></div>
+        <h2 class="h-sm">三个学段，<br>母体被<span class="red">依次掐尖</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:4cqw;">
+          <div class="bars wide">
+            <div class="bar-row"><span class="lab w">中学受験</span><span class="track"><span class="fill" style="width:18%"></span></span><span class="val">前 15~20%</span></div>
+            <div class="bar-row"><span class="lab w">高校受験</span><span class="track"><span class="fill" style="width:96%"></span></span><span class="val">近乎全员</span></div>
+            <div class="bar-row"><span class="lab w">大学受験</span><span class="track"><span class="fill" style="width:50%"></span></span><span class="val">约一半</span></div>
+          </div>
+          <p class="body">条形＝参加这场考试的人，占同龄人的多少。<br>中学受験只有志愿私立的孩子；大学受験那一半，<b>还是学力靠上的一半</b>。</p>
+        </div>
+        <p class="body">同一个孩子：中学受験 55 → 高校受験可能 65 → 大学受験又回落。<br><b>不是孩子退步了，是尺子换了。</b></p>
+      </div>
+    </article>
+
+    <!-- 08 中学受験 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">中学受験の偏差値</span><span class="no">08 / 11</span></div>
+        <h2 class="h-sm">同一所学校，<br>三套数字</h2>
+        <div class="grow stack" style="justify-content:center;gap:3.6cqw;">
+          <p class="body" style="text-align:center;font-family:var(--serif);color:var(--ink);font-size:4cqw;">以 開成中学 为例</p>
+          <div class="three">
+            <div class="cell hi"><div class="src">SAPIX</div><div class="v">67</div></div>
+            <div class="cell"><div class="src">四谷大塚</div><div class="v">71</div></div>
+            <div class="cell"><div class="src">首都圏模試</div><div class="v">78</div></div>
+          </div>
+          <div class="eqline">首都圏模試 ≈ 四谷 / 日能研 +8~10<br>≈ SAPIX +15~18</div>
+        </div>
+        <p class="body">SAPIX 的母体是难关校志向的孩子，<b>在 SAPIX 拿 50，放到首都圏模試可能是 65 以上</b>。看孩子的偏差值，第一句话永远是：<b class="red">这是哪家的表？</b></p>
+        <div class="foot">近年常见公布值，逐年浮动，以各机构最新发布为准</div>
+      </div>
+    </article>
+
+    <!-- 09 高校受験 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">高校受験の落とし穴</span><span class="no">09 / 11</span></div>
+        <h2 class="h-sm">高校受験：<br>偏差值之外还有<span class="red">内申</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:4cqw;">
+          <p class="body">V模擬 / W模擬、各县全県模試，参加人数多、母体最接近全体同龄人——<b>三个学段里偏差值最稳的一档</b>。</p>
+          <div>
+            <div class="ratio"><div class="a">学力检查 7</div><div class="b">内申 3</div></div>
+            <p class="body" style="margin-top:2.2cqw;font-size:3.1cqw;">东京都立一般入试的大致计分比例；私立的「併願優遇」直接按内申基准划线。</p>
+          </div>
+        </div>
+        <p class="body"><b>偏差值达标 ≠ 稳了。</b><br>内申是平时分，考前补不回来——它是从初一就开始记的另一张成绩单。</p>
+      </div>
+    </article>
+
+    <!-- 10 大学受験 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">三大模試のズレ</span><span class="no">10 / 11</span></div>
+        <h2 class="h-sm">同一所大学，<br>三家模考差 <span class="red">10 以上</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:3.4cqw;">
+          <div class="scale">
+            <div class="scale-row"><div class="name"><b>進研模試</b>母体最大·含中下层<span class="num">70</span></div>
+              <div class="axis"><i style="left:75%"></i></div></div>
+            <div class="scale-row"><div class="name"><b>河合塾 全統</b>行业基准<span class="num">60</span></div>
+              <div class="axis"><i style="left:50%"></i></div></div>
+            <div class="scale-row"><div class="name"><b>駿台 全国</b>难关校志愿者<span class="num">53</span></div>
+              <div class="axis"><i style="left:32.5%"></i></div></div>
+          </div>
+          <div class="axis-ticks"><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span></div>
+          <p class="body"><b>数字变了，大学没变。</b>母体越强，同一个位置对应的偏差值越低。</p>
+        </div>
+        <p class="body"><b>塾内考</b>母体只有本塾学生、常考刚学过的范围 → 偏高，只能看自己的趋势；<b>公开模考</b>面向全社会报名 → 才能横向定位。先看三件事：<b>参加人数、是否公开报名、有没有公布母体规模。</b></p>
+      </div>
+    </article>
+
+    <!-- 11 判定+实操 -->
+    <article class="card">
+      <div class="sheet">
+        <div class="slug"><span class="jp">判定と使い方</span><span class="no">11 / 11</span></div>
+        <h2 class="h-sm">A~E 不是分数线，<br>是<span class="red">概率</span></h2>
+        <div class="grow stack" style="justify-content:center;gap:4cqw;">
+          <div>
+            <div class="judge">
+              <div><div class="g">A</div><div class="p">80%↑</div></div>
+              <div><div class="g">B</div><div class="p">65%</div></div>
+              <div><div class="g">C</div><div class="p">50%</div></div>
+              <div><div class="g">D</div><div class="p">35%</div></div>
+              <div><div class="g">E</div><div class="p">20%↓</div></div>
+            </div>
+            <p class="body" style="margin-top:2.4cqw;font-size:3.1cqw;">以河合塾为例，各机构定义略有差异。<b>C 不是没戏，是硬币；A 也不是保险，是八成。</b></p>
+          </div>
+          <ol class="tips">
+            <li><b>看趋势，不看单次</b>——取最近 3 次的移动平均</li>
+            <li><b>看科间差</b>——总分一样，短板不同，策略完全不同</li>
+            <li><b>每次记三件事</b>——哪家模考、多少人、什么时候</li>
+          </ol>
+        </div>
+        <p class="body">偏差值不是给孩子贴的标签，是地图上的一个坐标。<br><b>坐标不决定终点，但你得先知道地图是谁画的。</b></p>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="caption">
+    <h2>正文（可直接复制到小红书）</h2>
+    <p class="hint">图卡负责被划走时也能看懂，正文负责留住愿意读完的人。两处外部数据（开成的三套偏差值、三大模考换算区间）逐年浮动，发布前建议对一次官网最新值。</p>
+    <button class="copy" type="button" id="copyBtn">复制正文与标签</button>
+    <div class="script" id="script">先说结论：<b>偏差值不是分数，是坐标。</b>
+而且是一张——必须标注「以谁为原点」的坐标。
+
+前几天刷到一张很火的正态分布图，底下写着「1σ 到 2σ 之间占 18.6%」。作为数学老师，我必须说一句：这个数字是错的。标准正态分布里，1σ~2σ 是 <b>13.59%</b>，2σ~3σ 是 <b>2.14%</b>，3σ 以外 <b>0.13%</b>。三段加起来 15.87%，正好对应「偏差值 60 以上」的比例。写成 18.6%，总和就超过 100% 了。
+
+数字错一点，判断会差很远。所以今天从公式讲到实操，一次讲清楚。
+
+<b>① 公式一行就写完</b>
+偏差值 ＝ 50 ＋ 10 ×（你的分数 − 平均分）÷ 标准差
+先用标准差量一遍「你离平均有多远」（统计里的 z 分数），再放大 10 倍、平移到 50。所以 50 ＝ 正好平均，60 ＝ 高出一个标准差，70 ＝ 高出两个标准差。国际上它叫 T 分数；智商测验用的是 100＋15z，IQ 130 和偏差值 70 是同一个位置。
+关键性质：这是线性变换，<b>不改变任何人的名次</b>，改变的只是刻度。
+
+<b>② 偏差值 ↔ 排名</b>
+80 → 前 0.13%（741 人中第 1）
+75 → 前 0.62%（161 人中第 1）
+70 → 前 2.28%（44 人中第 1）
+65 → 前 6.68%（15 人中第 1）
+60 → 前 15.87%（6.3 人中第 1）
+55 → 前 30.85%｜50 → 前 50%｜40 → 前 84.13%
+40 人的班级：60 ≈ 第 6 名，65 ≈ 第 3 名，70 ≈ 第 1 名。
+
+<b>③ 最该记住的一条：每 +5，你前面的人少一半</b>
+50→55 前面的人 ×0.62；55→60 ×0.51；60→65 ×0.42；65→70 ×0.34；70→75 ×0.27。
+同样是涨 5 分，起点越高要挤掉的比例越狠，要挤掉的人也越强。<b>「从 50 到 55」和「从 65 到 70」根本不是同一件事</b>，别用同一套时间表去要求孩子。
+
+<b>④ 偏差值有一个隐藏的分母：母体（母集団）</b>
+偏差值永远是相对「某一群人」算出来的。离开这群人，数字没有意义。所以：同一所学校，不同塾公布的偏差值不一样；校内考和全国模考不能比；中学受験、高校受験、大学受験更不能横着比。
+
+<b>⑤ 三个学段，母体完全不同</b>（家长最容易踩的坑）
+中学受験（小学生）：只有打算考私立的孩子才参加，大约是同龄人里的前 15%~20%，母体本来就是精英层，数字天然被压低。
+高校受験（中学生）：几乎全员升学，母体最接近「全体同龄人」，偏差值最贴近直觉。
+大学受験（高中生）：参加模考的是有升学意向的高三生＋浪人生，大约同龄人的一半，而且是学力靠上的那一半。
+同一个孩子，中学受験 55 → 高校受験可能是 65 → 大学受験又会回落。<b>不是孩子退步了，是尺子换了。</b>
+
+<b>⑥ 中学受験：同一所学校，三套数字</b>
+以开成中学为例（近年常见公布值，逐年浮动）：SAPIX 约 67｜四谷大塚 约 71｜首都圏模試 约 78。
+粗略换算：首都圏模試 ≈ 四谷大塚／日能研 ＋8~10 ≈ SAPIX ＋15~18。
+在 SAPIX 拿 50，放到首都圏模試里可能是 65 以上。看孩子的塾内偏差值，第一句话永远是：<b>这是哪家的表？</b>
+
+<b>⑦ 高校受験：偏差值之外还有「内申点」</b>
+V模擬／W模擬、各县全県模試母体大，偏差值是三个学段里最稳的。但公立高中录取不只看当天：以东京都立为例，学力检查与调查书（内申）大致按 7:3 计入总分；私立的「併願優遇」更是直接按内申基准划线。<b>偏差值达标 ≠ 稳了，内申是平时分，临考补不回来。</b>
+
+<b>⑧ 大学受験：三大模考，同一所大学差 10 以上</b>
+進研模試（Benesse）母体最大、含中下层 → 偏差值最好看；河合塾全統母体大且均衡 → 行业基准；駿台全国模試母体是难关校志愿者 → 最苛刻。
+粗略对应：<b>進研 70 ≈ 河合 60 ≈ 駿台 52~55</b>。数字变了，大学没变。
+还要分清：塾内考母体只有本塾学生、常考刚学过的范围 → 偏差值虚高，只能看自己的纵向趋势；公开模考面向全社会报名 → 才有横向定位的价值。判断标准就三条：参加人数、是否公开报名、是否公布母体规模。
+
+<b>⑨ 判定 A~E 不是分数线，是概率</b>
+以河合塾为例：A ≈ 合格可能性 80% 以上，B ≈ 65%，C ≈ 50%，D ≈ 35%，E ≈ 20% 以下（各机构定义略有差异）。学校公布的「偏差值 62.5」通常是合格者的 80% 线或中位数，不是「考到就录取」的及格线。<b>C 判定不是没戏，是硬币；A 判定也不是保险，是八成。</b>
+
+<b>⑩ 三个统计学陷阱（数学老师私货）</b>
+· 这次考试的偏差值有上限：上限 ＝ 50 ＋ 10 ×（满分 − 平均分）÷ 标准差。平均 60、标准差 15、满分 100 的考试，谁都不可能超过 76.7。题目太简单时尖子生没有发挥空间——那次「偏差值掉了」，可能只是卷子变简单了。
+· 样本太小，偏差值不稳：校内 100 人的考试，标准差本身估得就不准，上下晃 3~5 很正常。
+· 总分偏差值比单科更极端：各科不完全相关，加总会放大稳定的优势。5 科都是 60、科间相关约 0.5 时，总分大约是 63；反过来各科都是 40，总分可能掉到 37。
+
+<b>⑪ 那到底怎么用？</b>
+1）看趋势，不看单次——至少取最近 3 次的移动平均。
+2）看科间差——5 科 60/60/60/60/60 和 70/70/50/50/60，总分一样但策略完全不同，先补短板性价比最高。
+3）每次记录三件事：哪家模考、多少人参加、什么时候考的。没有这三条的偏差值，等于没有单位的数字。
+
+偏差值不是给孩子贴的标签，是地图上的一个坐标。坐标不决定终点，但你至少要先知道：<b>自己站在哪儿，以及这张地图是谁画的。</b>
+
+你家孩子现在在哪个阶段？评论区写下「学段 ＋ 目标校 ＋ 最近一次模考（哪家）」，我帮你看看这个偏差值该怎么读 👀</div>
+    <div class="tags">
+      <span>#日本升学</span><span>#日本留学</span><span>#偏差值</span><span>#中学受験</span>
+      <span>#高校受験</span><span>#大学受験</span><span>#日本教育</span><span>#模拟考</span>
+      <span>#正态分布</span><span>#数学思维</span><span>#家长必读</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.getElementById('soloBtn').addEventListener('click', function(){
+  var solo = document.getElementById('deck').classList.toggle('solo');
+  this.textContent = solo ? '切换回网格' : '切换到单张大图';
+});
+document.getElementById('copyBtn').addEventListener('click', function(){
+  var text = document.getElementById('script').innerText + '\n\n'
+    + Array.from(document.querySelectorAll('.tags span')).map(function(s){return s.textContent;}).join(' ');
+  navigator.clipboard.writeText(text).then(function(){
+    var b = document.getElementById('copyBtn'); b.textContent = '已复制';
+    setTimeout(function(){ b.textContent = '复制正文与标签'; }, 1800);
+  }, function(){
+    document.getElementById('copyBtn').textContent = '复制失败，请手动选中';
+  });
+});
+</script>
