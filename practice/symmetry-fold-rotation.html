@@ -113,8 +113,9 @@
   svg.f .ar{stroke-width:1.5}
   @media print{
     body{background:#fff}
-    .sheet{margin:0;box-shadow:none;width:auto;min-height:0;page-break-after:always}
-    @page{size:A4;margin:12mm}
+    .sheet{margin:0 auto;box-shadow:none;min-height:1145px;page-break-after:always}
+    .sheet:last-of-type{page-break-after:auto}
+    @page{size:A4;margin:10mm}
   }
 </style>
 
