@@ -1,0 +1,419 @@
+<title>実力テスト①　類題演習</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --line:#2b2b2b;
+    --paper:#ffffff;
+    --shade:#d7dbe1;
+    --rule:#5a5a5a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:#8c8f94;
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP","Meiryo",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    width:820px;
+    min-height:1160px;
+    margin:26px auto;
+    background:var(--paper);
+    padding:38px 46px 30px;
+    position:relative;
+    box-shadow:0 3px 14px rgba(0,0,0,.35);
+  }
+
+  /* ---------- running head + banner ---------- */
+  .runhead{font-size:13.5px;letter-spacing:.06em;margin-bottom:2px}
+  .runhead.right{text-align:right}
+  .banner{position:relative;height:52px;margin:0 0 14px}
+  .banner .pill{
+    position:absolute;left:0;right:0;top:8px;bottom:8px;
+    border:2.6px solid var(--rule);border-radius:20px;
+  }
+  .banner .bar{position:absolute;top:50%;height:0;border-top:2.6px solid var(--rule)}
+  .banner .bar.l{left:16px;right:calc(50% + 104px)}
+  .banner .bar.r{right:16px;left:calc(50% + 104px)}
+  .banner .dot{position:absolute;top:50%;width:9px;height:9px;background:var(--rule);transform:translateY(-50%)}
+  .banner .dot.l{right:calc(50% + 104px)}
+  .banner .dot.r{left:calc(50% + 104px)}
+  .banner .dots{position:absolute;top:50%;transform:translateY(-50%);display:flex;gap:13px}
+  .banner .dots.l{right:calc(50% + 118px)}
+  .banner .dots.r{left:calc(50% + 118px)}
+  .banner .dots i{display:block;width:9px;height:9px;border-radius:50%;background:var(--rule)}
+  .banner .title{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    background:var(--paper);padding:0 14px;white-space:nowrap;
+  }
+  .banner .cap{
+    display:inline-block;border:2.2px solid var(--ink);
+    font-size:26px;line-height:1;padding:5px 5px 6px;margin:0 3px;
+    font-weight:600;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+  }
+
+  /* ---------- problems ---------- */
+  .q{display:flex;gap:8px;margin:0 0 6px;align-items:flex-start;page-break-inside:avoid}
+  .sheet.loose .q{margin-bottom:30px}
+  .sheet.loose .ans{margin-bottom:14px}
+  .stepwrap{width:54px;flex:none;padding-top:3px}
+  .step{
+    display:block;position:relative;font-size:7.6px;line-height:1.3;text-align:center;white-space:nowrap;
+    border:1.2px solid #4b4b4b;background:#fff;padding:1px 2px 1px 8px;
+    clip-path:polygon(0 50%,7px 0,100% 0,100% 100%,7px 100%);
+    letter-spacing:-.04em;
+  }
+  .step em{display:block;font-style:italic;font-size:9px;text-align:right;padding-right:2px}
+  .num{
+    flex:none;width:22px;text-align:center;
+    font:italic 700 20px/1.1 "Times New Roman",Times,serif;
+    padding-top:1px;
+  }
+  .num .star{display:block;font-size:11px;font-style:normal;line-height:.9;letter-spacing:-1px}
+  .body{flex:1;min-width:0;position:relative}
+  .cbfloat{position:absolute;left:-25px;top:26px;width:13px;height:13px;border:1.4px solid #7d8590;background:#eef0f3}
+  .fig{flex:none;margin-left:6px}
+  .figR{float:right;margin:0 0 4px 10px}
+  .frac{display:inline-flex;flex-direction:column;vertical-align:-0.42em;margin:0 3px;font-family:"Times New Roman",serif;font-style:normal}
+  .frac em{font-style:normal;font-size:11.5px;line-height:1.12;text-align:center;padding:0 2px}
+  .frac em:first-child{border-bottom:1.3px solid #222}
+  .txt{font-size:15px;line-height:1.75;letter-spacing:.01em}
+  .sub{margin-top:2px}
+  .item{display:flex;font-size:15px;line-height:1.75;margin-top:5px}
+  .cb{flex:none;width:13px;height:13px;border:1.4px solid #7d8590;margin:5px 5px 0 0;background:#eef0f3}
+  .cb.hollow{background:#fff;border-color:#555}
+  .no{flex:none;width:30px}
+  .ans{display:block;text-align:right;margin:2px 40px 8px 0;height:20px}
+  .ans span{display:inline-block;font-size:26px;line-height:.8;transform:scaleX(.7);color:#111}
+  .ans i{display:inline-block;width:130px}
+  .pageno{
+    position:absolute;bottom:26px;font:italic 700 15px "Times New Roman",serif;
+  }
+  .pageno.l{left:46px}
+  .pageno.r{right:46px}
+  ruby{ruby-position:over}
+  rt{font-size:8px;font-weight:400;letter-spacing:0}
+
+  /* ---------- figures ---------- */
+  svg.f{overflow:visible}
+  svg.f path,svg.f line,svg.f polyline,svg.f polygon,svg.f circle,svg.f rect,svg.f ellipse{
+    fill:none;stroke:var(--line);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round;
+  }
+  svg.f .d{stroke-dasharray:5 4;stroke-width:1.15;stroke:#3a3a3a}
+  svg.f .t{stroke-width:1.15}
+  svg.f .sh{fill:var(--shade);stroke:none}
+  svg.f .sh2{fill:var(--shade);stroke:var(--line);stroke-width:1.7}
+  svg.f text{
+    stroke:none;fill:var(--ink);
+    font:15px "Helvetica Neue",Arial,sans-serif;
+  }
+  svg.f .u{font-size:13px}
+  svg.f .it{font:italic 15px "Times New Roman",serif}
+  svg.f .ar{stroke-width:1.5}
+  @media print{
+    body{background:#fff}
+    .sheet{margin:0 auto;box-shadow:none;min-height:1145px;page-break-after:always}
+    .sheet:last-of-type{page-break-after:auto}
+    @page{size:A4;margin:10mm}
+  }
+
+  /* ---------- test-drill additions ---------- */
+  .sup{font-size:.72em;vertical-align:.55em;font-family:"Times New Roman",serif;font-style:normal}
+  .mfr{display:inline-block;vertical-align:-11px;text-indent:0;margin:0 3px;text-align:center;font-family:"Times New Roman",serif}
+  .mfr b{display:block;font-weight:400;font-size:12px;line-height:1.25;padding:0 3px}
+  .mfr b:first-child{border-bottom:1.2px solid #111}
+  .sys{display:inline-flex;align-items:center;vertical-align:-19px;margin:0 4px;text-indent:0}
+  .sys .br{font-size:27px;line-height:.72;font-weight:300;display:inline-block;margin:0 3px 0 1px;font-family:"Times New Roman",serif}
+  .sys .eq{display:inline-flex;flex-direction:column;font-family:"Times New Roman",serif;font-size:13px;line-height:1.5;padding:0 1px}
+  .mt{font-family:"Times New Roman",Times,serif;font-size:14.5px}
+  .no.w{width:44px}
+  .figgrid{display:flex;flex-wrap:wrap;gap:6px 0;margin:4px 0 0}
+  .figcell{width:50%;display:flex;align-items:flex-start;gap:4px;padding:2px 0 6px}
+  .figcell .lab{flex:none;width:36px;font-size:13px;padding-top:34px}
+  .ansline{text-align:right;margin:0 30px 0 0}
+  .ansline span{display:inline-block;font-size:24px;line-height:.8;transform:scaleX(.7)}
+  .ansline i{display:inline-block;width:96px}
+  /* answer key */
+  .akey{column-count:2;column-gap:26px;font-size:12.5px;line-height:1.6}
+  .akey .acol{break-inside:avoid-column;margin-bottom:12px}
+  .akey h3{font-size:13px;margin:0 0 5px;padding:3px 6px;background:#eef0f3;border-left:3px solid #6b7280;font-weight:600}
+  .akey h3 span{float:right;font-style:italic;font-weight:400;color:#555}
+  .akey dl{margin:0 0 10px}
+  .akey dt{float:left;clear:left;width:34px;font-size:11.5px;padding-top:1px}
+  .akey dd{margin:0 0 6px 34px}
+  .akey p{margin:2px 0 0;color:#333;font-size:11.5px;line-height:1.55}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0.5,1 L9,5 L0.5,9" fill="none" stroke="#2b2b2b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs></svg>
+
+<!-- ==================== 1枚目 ==================== -->
+<div class="sheet">
+  <div class="runhead">令和8年度　第1回実力テスト①　1(3)(6)(9)</div>
+  <div class="banner">
+    <div class="pill"></div><div class="bar l"></div><div class="bar r"></div>
+    <div class="dot l"></div><div class="dot r"></div>
+    <div class="title">
+      <span class="cap">類</span><span class="cap">題</span><span class="cap">演</span><span class="cap">習</span><span class="cap">A</span>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="q">
+    <div class="stepwrap"><span class="step">テスト<em>1(3)</em></span></div>
+    <div class="num">1</div>
+    <div class="body">
+      <div class="txt">次の計算をしなさい。</div>
+      <div class="item"><span class="cb"></span><span class="no w">原題</span><span class="mt">(24<i>x</i><span class="sup">2</span><i>y</i><span class="sup">3</span>−36<i>xy</i><span class="sup">2</span>)÷(−12<i>xy</i>)</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb"></span><span class="no w">(1)</span><span class="mt">(18<i>a</i><span class="sup">3</span><i>b</i><span class="sup">2</span>−27<i>a</i><span class="sup">2</span><i>b</i>)÷(−9<i>ab</i>)</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(2)</span><span class="mt">(20<i>x</i><span class="sup">3</span><i>y</i>−15<i>xy</i><span class="sup">3</span>)÷(−5<i>xy</i>)</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(3)</span><span class="mt">(36<i>m</i><span class="sup">2</span><i>n</i><span class="sup">3</span>−24<i>mn</i><span class="sup">2</span>)÷(−12<i>mn</i><span class="sup">2</span>)</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="q">
+    <div class="stepwrap"><span class="step">テスト<em>1(6)</em></span></div>
+    <div class="num">2</div>
+    <div class="body">
+      <div class="txt">次の式を因数分解しなさい。</div>
+      <div class="item"><span class="cb"></span><span class="no w">原題</span><span class="mt"><i>x</i><span class="sup">2</span>+4<i>xy</i>+4<i>y</i><span class="sup">2</span>+2<i>x</i>+4<i>y</i>−3</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb"></span><span class="no w">(1)</span><span class="mt"><i>x</i><span class="sup">2</span>+6<i>xy</i>+9<i>y</i><span class="sup">2</span>+3<i>x</i>+9<i>y</i>−10</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(2)</span><span class="mt"><i>x</i><span class="sup">2</span>−2<i>xy</i>+<i>y</i><span class="sup">2</span>−5<i>x</i>+5<i>y</i>+6</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(3)</span><span class="mt">4<i>x</i><span class="sup">2</span>+4<i>xy</i>+<i>y</i><span class="sup">2</span>+6<i>x</i>+3<i>y</i>−4</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="q">
+    <div class="stepwrap"><span class="step">テスト<em>1(9)</em></span></div>
+    <div class="num">3</div>
+    <div class="body">
+      <div class="txt">次の<i>x</i>，<i>y</i>についての2組の連立方程式の解が一致するとき，<i>a</i>，<i>b</i>の値を求めなさい。</div>
+      <div class="item" style="margin-top:6px"><span class="cb"></span><span class="no w">原題</span><span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>x</i>+2<i>y</i>=−5</span><span><i>ax</i>+<i>by</i>=26</span></span></span>
+        <span style="display:inline-block;width:20px"></span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>bx</i>−<i>ay</i>=−7</span><span><i>x</i>+<i>y</i>=−1</span></span></span></span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb"></span><span class="no w">(1)</span><span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>x</i>+3<i>y</i>=1</span><span><i>ax</i>+<i>by</i>=14</span></span></span>
+        <span style="display:inline-block;width:20px"></span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>bx</i>−<i>ay</i>=−5</span><span><i>x</i>−<i>y</i>=5</span></span></span></span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(2)</span><span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span>2<i>x</i>+<i>y</i>=−1</span><span><i>ax</i>+<i>by</i>=−17</span></span></span>
+        <span style="display:inline-block;width:20px"></span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>bx</i>−<i>ay</i>=−6</span><span><i>x</i>+<i>y</i>=1</span></span></span></span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(3)</span><span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span>3<i>x</i>−<i>y</i>=13</span><span><i>ax</i>+<i>by</i>=4</span></span></span>
+        <span style="display:inline-block;width:20px"></span>
+        <span class="sys"><span class="br">{</span><span class="eq"><span><i>bx</i>−<i>ay</i>=−19</span><span><i>x</i>+<i>y</i>=7</span></span></span></span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+    </div>
+  </div>
+
+  <div class="pageno l">1</div>
+</div>
+
+<!-- ==================== 2枚目 ==================== -->
+<div class="sheet">
+  <div class="runhead right">令和8年度　第1回実力テスト①　1(13)(17)</div>
+  <div class="banner">
+    <div class="pill"></div><div class="bar l"></div><div class="bar r"></div>
+    <div class="dot l"></div><div class="dot r"></div>
+    <div class="title">
+      <span class="cap">類</span><span class="cap">題</span><span class="cap">演</span><span class="cap">習</span><span class="cap">B</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="q">
+    <div class="stepwrap"><span class="step">テスト<em>1(13)</em></span></div>
+    <div class="num">4</div>
+    <div class="body">
+      <div class="txt">次の確率を求めなさい。</div>
+      <div class="item"><span class="cb"></span><span class="no w">原題</span><span>箱の中に、赤、白、青の玉が1個ずつ入っている。箱の中をよく混ぜてから玉を1個取り出し、その色を確認した後、箱の中に戻す。これをもう1回繰り返し、玉を合計2回取り出すとき、2回のうち1回だけ赤玉がでる確率。</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb"></span><span class="no w">(1)</span><span>箱の中に、赤、白、青、黄の玉が1個ずつ入っている。玉を1個取り出して色を確認し、箱の中に戻す。これをもう1回繰り返して合計2回取り出すとき、2回のうち1回だけ赤玉がでる確率。</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(2)</span><span>箱の中に、赤、白、青の玉が1個ずつ入っている。玉を1個取り出して色を確認し、箱の中に戻す。これをもう1回繰り返して合計2回取り出すとき、少なくとも1回は赤玉がでる確率。</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+      <div class="item"><span class="cb hollow"></span><span class="no w">(3)</span><span>箱の中に、赤、白、青の玉が1個ずつ入っている。玉を1個取り出し、それを箱の中に<u>もどさないで</u>、続けてもう1個取り出すとき、2個のうち1個だけ赤玉がでる確率。</span></div>
+      <div class="ans"><span>（</span><i></i><span>）</span></div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="q">
+    <div class="stepwrap"><span class="step">テスト<em>1(17)</em></span></div>
+    <div class="num">5</div>
+    <div class="body">
+      <div class="txt">次のような図形を、直線ℓを回転の軸として1回転させてできる立体の表面積を求めなさい。円周率は3.14とします。</div>
+      <div class="figgrid">
+        <div class="figcell">
+          <span class="lab">原題</span>
+          <div style="flex:1">
+            <svg class="f" width="176" height="150" viewBox="0 0 210 186">
+              <polygon class="sh" points="152,150 80,150 80,78 104,78 104,54 152,54"/>
+              <polygon points="152,150 80,150 80,78 104,78 104,54 152,54"/>
+              <line x1="176" y1="26" x2="176" y2="172"/>
+              <ellipse cx="128" cy="150" rx="48" ry="13" class="d"/>
+              <text x="128" y="46" class="u" text-anchor="middle">4cm</text>
+              <text x="165" y="46" class="u" text-anchor="middle">2cm</text>
+              <text x="98" y="70" class="u" text-anchor="end">2cm</text>
+              <text x="76" y="118" class="u" text-anchor="end">6cm</text>
+              <text x="116" y="180" class="u" text-anchor="middle">6cm</text>
+              <text x="166" y="180" class="u" text-anchor="middle">2cm</text>
+              <text x="182" y="32" class="it">ℓ</text>
+            </svg>
+            <div class="ansline"><span>（</span><i></i><span>）</span></div>
+          </div>
+        </div>
+        <div class="figcell">
+          <span class="lab">(1)</span>
+          <div style="flex:1">
+            <svg class="f" width="176" height="150" viewBox="0 0 210 186">
+              <rect class="sh" x="100" y="84" width="42" height="56"/>
+              <rect x="100" y="84" width="42" height="56"/>
+              <line x1="170" y1="26" x2="170" y2="166"/>
+              <ellipse cx="135" cy="140" rx="35" ry="10" class="d"/>
+              <text x="121" y="76" class="u" text-anchor="middle">3cm</text>
+              <text x="158" y="76" class="u" text-anchor="middle">2cm</text>
+              <text x="96" y="116" class="u" text-anchor="end">4cm</text>
+              <text x="176" y="32" class="it">ℓ</text>
+            </svg>
+            <div class="ansline"><span>（</span><i></i><span>）</span></div>
+          </div>
+        </div>
+        <div class="figcell">
+          <span class="lab">(2)</span>
+          <div style="flex:1">
+            <svg class="f" width="176" height="150" viewBox="0 0 210 186">
+              <polygon class="sh" points="170,140 86,140 86,112 128,112 128,70 170,70"/>
+              <polygon points="170,140 86,140 86,112 128,112 128,70 170,70"/>
+              <line x1="170" y1="26" x2="170" y2="166"/>
+              <ellipse cx="128" cy="140" rx="42" ry="11" class="d"/>
+              <text x="128" y="164" class="u" text-anchor="middle">6cm</text>
+              <text x="82" y="130" class="u" text-anchor="end">2cm</text>
+              <text x="102" y="108" class="u" text-anchor="middle">3cm</text>
+              <text x="125" y="86" class="u" text-anchor="end">3cm</text>
+              <text x="149" y="62" class="u" text-anchor="middle">3cm</text>
+              <text x="176" y="32" class="it">ℓ</text>
+            </svg>
+            <div class="ansline"><span>（</span><i></i><span>）</span></div>
+          </div>
+        </div>
+        <div class="figcell">
+          <span class="lab">(3)</span>
+          <div style="flex:1">
+            <svg class="f" width="176" height="150" viewBox="0 0 210 186">
+              <polygon class="sh" points="163,150 111,150 111,111 137,111 137,72 163,72"/>
+              <polygon points="163,150 111,150 111,111 137,111 137,72 163,72"/>
+              <line x1="176" y1="26" x2="176" y2="172"/>
+              <ellipse cx="143" cy="150" rx="33" ry="10" class="d"/>
+              <text x="137" y="174" class="u" text-anchor="middle">4cm</text>
+              <text x="172" y="174" class="u" text-anchor="middle">1cm</text>
+              <text x="107" y="134" class="u" text-anchor="end">3cm</text>
+              <text x="119" y="106" class="u" text-anchor="middle">2cm</text>
+              <text x="134" y="88" class="u" text-anchor="end">3cm</text>
+              <text x="150" y="64" class="u" text-anchor="middle">2cm</text>
+              <text x="182" y="32" class="it">ℓ</text>
+            </svg>
+            <div class="ansline"><span>（</span><i></i><span>）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pageno r">2</div>
+</div>
+
+<!-- ==================== 3枚目　解答 ==================== -->
+<div class="sheet">
+  <div class="runhead">令和8年度　第1回実力テスト①　類題演習</div>
+  <div class="banner">
+    <div class="pill"></div><div class="bar l"></div><div class="bar r"></div>
+    <div class="dots l"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="dots r"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="title"><span class="cap">解</span><span class="cap">答</span></div>
+  </div>
+
+  <div class="akey">
+    <div class="acol">
+      <h3>1　単項式でわる計算<span>p.1</span></h3>
+      <dl>
+        <dt>原題</dt><dd>−2<i>xy</i><span class="sup">2</span>+3<i>y</i></dd>
+        <dt>(1)</dt><dd>−2<i>a</i><span class="sup">2</span><i>b</i>+3<i>a</i></dd>
+        <dt>(2)</dt><dd>−4<i>x</i><span class="sup">2</span>+3<i>y</i><span class="sup">2</span></dd>
+        <dt>(3)</dt><dd>−3<i>mn</i>+2
+          <p>各項をわり算する。符号のミスが多いので、2つ目の項の符号（マイナス÷マイナス＝プラス）に注意。</p></dd>
+      </dl>
+      <h3>2　因数分解（おきかえ）<span>p.1</span></h3>
+      <dl>
+        <dt>原題</dt><dd>(<i>x</i>+2<i>y</i>+3)(<i>x</i>+2<i>y</i>−1)
+          <p><i>x</i>+2<i>y</i>＝<i>A</i> とおくと <i>A</i><span class="sup">2</span>+2<i>A</i>−3＝(<i>A</i>+3)(<i>A</i>−1)。</p></dd>
+        <dt>(1)</dt><dd>(<i>x</i>+3<i>y</i>+5)(<i>x</i>+3<i>y</i>−2)
+          <p><i>x</i>+3<i>y</i>＝<i>A</i>。<i>A</i><span class="sup">2</span>+3<i>A</i>−10。</p></dd>
+        <dt>(2)</dt><dd>(<i>x</i>−<i>y</i>−2)(<i>x</i>−<i>y</i>−3)
+          <p><i>x</i>−<i>y</i>＝<i>A</i>。<i>A</i><span class="sup">2</span>−5<i>A</i>+6。</p></dd>
+        <dt>(3)</dt><dd>(2<i>x</i>+<i>y</i>+4)(2<i>x</i>+<i>y</i>−1)
+          <p>2<i>x</i>+<i>y</i>＝<i>A</i>。<i>A</i><span class="sup">2</span>+3<i>A</i>−4。はじめの3項が(2<i>x</i>+<i>y</i>)<span class="sup">2</span>になることに気づく。</p></dd>
+      </dl>
+    </div>
+    <div class="acol">
+      <h3>3　連立方程式の解が一致する<span>p.1</span></h3>
+      <dl>
+        <dt>原題</dt><dd><i>a</i>＝2、<i>b</i>＝−5
+          <p><i>a</i>，<i>b</i>のない2式 <i>x</i>+2<i>y</i>＝−5、<i>x</i>+<i>y</i>＝−1 から <i>x</i>＝3、<i>y</i>＝−4。
+          残り2式に代入して 3<i>a</i>−4<i>b</i>＝26、4<i>a</i>+3<i>b</i>＝−7。</p></dd>
+        <dt>(1)</dt><dd><i>a</i>＝3、<i>b</i>＝−2　<span style="color:#555">（<i>x</i>＝4、<i>y</i>＝−1）</span></dd>
+        <dt>(2)</dt><dd><i>a</i>＝4、<i>b</i>＝−3　<span style="color:#555">（<i>x</i>＝−2、<i>y</i>＝3）</span></dd>
+        <dt>(3)</dt><dd><i>a</i>＝2、<i>b</i>＝−3　<span style="color:#555">（<i>x</i>＝5、<i>y</i>＝2）</span>
+          <p>やり方は同じ。まず<i>a</i>，<i>b</i>をふくまない2式で解を出す。</p></dd>
+      </dl>
+      <h3>4　確率<span>p.2</span></h3>
+      <dl>
+        <dt>原題</dt><dd><span class="mfr"><b>4</b><b>9</b></span>
+          <p>全部で3×3＝9通り。（赤,赤以外）2通りと（赤以外,赤）2通りで4通り。</p></dd>
+        <dt>(1)</dt><dd><span class="mfr"><b>3</b><b>8</b></span>
+          <p>4×4＝16通り。1×3+3×1＝6通り。</p></dd>
+        <dt>(2)</dt><dd><span class="mfr"><b>5</b><b>9</b></span>
+          <p>1−（1回も赤が出ない確率）＝1−<span class="mfr"><b>4</b><b>9</b></span>。</p></dd>
+        <dt>(3)</dt><dd><span class="mfr"><b>2</b><b>3</b></span>
+          <p>もどさないので3×2＝6通り。赤が1個だけなので「1回だけ赤」＝「赤がふくまれる」で4通り。</p></dd>
+      </dl>
+    </div>
+    <div class="acol" style="column-span:all;margin-top:2px">
+      <h3>5　回転体の表面積<span>p.2</span></h3>
+      <dl>
+        <dt>原題</dt><dd>854.08cm<span class="sup">2</span>
+          <p>外側の側面 2×8×6＝96、上の面(半径6と2の円環) 36−4＝32、段の面(半径8と6) 64−36＝28、
+          段の側面 2×6×2＝24、内側の側面(穴のかべ) 2×2×8＝32、底の面(半径8と2) 64−4＝60。
+          合計272。272×3.14＝854.08cm<span class="sup">2</span>。<br>
+          ※すべて「π」をつけたまま計算し、最後に3.14をかけるとミスが減る。</p></dd>
+        <dt>(1)</dt><dd>307.72cm<span class="sup">2</span>
+          <p>穴のあいた円柱。外側 2×5×4＝40、内側 2×2×4＝16、上下の円環 (25−4)×2＝42。合計98。</p></dd>
+        <dt>(2)</dt><dd>357.96cm<span class="sup">2</span>
+          <p>円柱を2つ重ねた形。底 36、下の側面 2×6×2＝24、段の面 36−9＝27、上の側面 2×3×3＝18、上の面 9。合計114。</p></dd>
+        <dt>(3)</dt><dd>339.12cm<span class="sup">2</span>
+          <p>穴のあいた2段の立体。底の円環 25−1＝24、下の側面 2×5×3＝30、段の面 25−9＝16、
+          上の側面 2×3×3＝18、上の円環 9−1＝8、内側の側面 2×1×6＝12。合計108。</p></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="pageno l">3</div>
+</div>
