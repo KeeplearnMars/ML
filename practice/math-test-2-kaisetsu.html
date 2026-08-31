@@ -1,0 +1,389 @@
+<title>実力テスト 分析と詳解</title>
+<style>
+  :root{--ink:#141414;--line:#333;--accent:#3d5a80;--soft:#eef1f5}
+  *{box-sizing:border-box}
+  body{margin:0;background:#8c8f94;color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP","Meiryo",sans-serif;}
+  .doc{width:880px;margin:26px auto;background:#fff;
+    padding:36px 46px 40px;position:relative;box-shadow:0 3px 14px rgba(0,0,0,.35)}
+  h1{font-size:21px;margin:0 0 4px;letter-spacing:.02em}
+  h1 span{font-size:12px;font-weight:400;color:#555;margin-left:10px}
+  h2{font-size:15px;margin:18px 0 8px;padding:5px 10px;background:var(--soft);
+     border-left:5px solid var(--accent);letter-spacing:.03em}
+  h3{font-size:13.5px;margin:12px 0 5px;color:#1f2937;border-bottom:1.5px solid #c9d2dd;padding-bottom:2px}
+  p,li,td,th{font-size:12.4px;line-height:1.75}
+  p{margin:4px 0 8px}
+  .lead{font-size:12.4px;line-height:1.8;margin:6px 0 10px}
+  table{border-collapse:collapse;width:100%;margin:4px 0 10px}
+  th,td{border:1px solid #b9c2cc;padding:4px 7px;vertical-align:top}
+  th{background:var(--soft);font-weight:600;text-align:center;white-space:nowrap}
+  td.c{text-align:center;white-space:nowrap}
+  td.n{text-align:center;white-space:nowrap;font-family:"Times New Roman",serif}
+  .ans{background:#fbfcfd}
+  i,.v{font-family:"Times New Roman",Times,serif;font-style:italic}
+  .mt{font-family:"Times New Roman",Times,serif}
+  .sub{font-size:.72em;vertical-align:-.25em;font-family:"Times New Roman",serif;font-style:normal}
+  .sup{font-size:.72em;vertical-align:.55em;font-family:"Times New Roman",serif;font-style:normal}
+  .rad{border-top:1.05px solid #111;padding:0 2px 0 1px}
+  .fr{display:inline-block;vertical-align:-10px;text-align:center;font-family:"Times New Roman",serif;margin:0 2px}
+  .fr b{display:block;font-weight:400;font-size:11px;line-height:1.25;padding:0 3px}
+  .fr b:first-child{border-bottom:1.1px solid #111}
+  .sol{margin:2px 0 10px 0}
+  .sol .q{font-weight:600;font-size:12.6px;margin-bottom:1px}
+  .sol .a{display:inline-block;background:#eaf0f6;border:1px solid #b9c9dc;border-radius:3px;
+    padding:0 7px;margin:1px 0 3px;font-weight:600;font-size:12.4px}
+  .sol .w{font-size:11.8px;line-height:1.72;color:#333;margin:2px 0 0}
+  .tip{border:1px solid #d9b38c;background:#fdf6ee;padding:6px 10px;margin:6px 0 10px;font-size:11.8px;line-height:1.7}
+  .tip b{color:#8a5a20}
+  .two{display:flex;gap:16px}
+  .two>div{flex:1}
+  .pno{position:absolute;bottom:14px;right:44px;font-size:11px;color:#666}
+  ul{margin:2px 0 8px;padding-left:1.3em}
+  li{margin:1px 0}
+  .star{color:#b45309;font-weight:700;letter-spacing:-1px}
+  svg text{font:11px "Helvetica Neue",Arial,sans-serif;fill:#141414}
+  svg .fg{fill:none;stroke:#333;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+  svg .dt{stroke-dasharray:2 2.4;stroke-width:.9}
+  @media print{
+    body{background:#fff}
+    .doc{width:auto;margin:0;padding:0;box-shadow:none}
+    h1{break-after:avoid}
+    h2{break-after:avoid;break-inside:avoid}
+    .sol,.tip,ul,.two{break-inside:avoid}
+    table{break-inside:auto}
+    tr,th,td{break-inside:avoid}
+    @page{size:A4;margin:12mm 11mm}
+  }
+</style>
+
+<div class="doc">
+  <h1>数学 実力テスト　分析と詳解<span>大問1〜7／小問33問</span></h1>
+  <div class="lead">中1〜中3の全範囲から出題された総合テスト。計算13問（約4割）で土台を確認し、
+  大問4〜7で「グラフを読む」「データを読む」「文字式で説明する」という記述・思考系にウェイトが置かれている。
+  正答するだけなら公式で足りる問題と、図や条件を自分で言い換えないと解けない問題がはっきり分かれる構成。</div>
+
+  <h2>1．出題構成</h2>
+  <table>
+    <tr><th style="width:42px">大問</th><th>分野</th><th style="width:52px">小問数</th><th style="width:66px">目安時間</th><th style="width:58px">難易度</th><th>ねらい</th></tr>
+    <tr><td class="c">1</td><td>数と式の計算／方程式</td><td class="c">8</td><td class="c">10分</td><td class="c">基礎</td><td>正負の数・単項式の乗除・分数式・展開・平方根・1次／連立／2次方程式</td></tr>
+    <tr><td class="c">2</td><td>数の性質・式の活用</td><td class="c">5</td><td class="c">7分</td><td class="c">基礎〜標準</td><td>符号の判断、等式変形、4項の因数分解、式の値、平方根と整数</td></tr>
+    <tr><td class="c">3</td><td>小問集合（関数・図形・確率）</td><td class="c">6</td><td class="c">10分</td><td class="c">標準</td><td>直線と点、角錐の辺、正多角形と平行線、回転体、円錐の展開図、確率</td></tr>
+    <tr><td class="c">4</td><td>1次関数の利用（速さ）</td><td class="c">4</td><td class="c">7分</td><td class="c">標準〜応用</td><td>グラフの読み取り、すれちがい、2人の距離のグラフ選択</td></tr>
+    <tr><td class="c">5</td><td>データの活用（箱ひげ図）</td><td class="c">2</td><td class="c">4分</td><td class="c">標準</td><td>四分位範囲、12個のデータの中央値から未知の値を決定</td></tr>
+    <tr><td class="c">6</td><td>関数の融合（反比例×比例）</td><td class="c">4</td><td class="c">8分</td><td class="c">標準〜応用</td><td>座標、二等辺三角形の条件、線対称な直線、面積の比</td></tr>
+    <tr><td class="c">7</td><td>規則性（文字式による説明）</td><td class="c">4</td><td class="c">8分</td><td class="c">応用</td><td>数え上げ→式化→方程式→不等式的な最大値の決定</td></tr>
+  </table>
+  <p style="font-size:11.5px;color:#555;margin-top:-4px">※配点は問題用紙に記載がないため未記載。小問数から均等配点とすると1問約3点（33問≒100点）。目安時間の合計は54分。</p>
+
+  <h2>2．分野別の内訳（小問ベース）</h2>
+  <table>
+    <tr><th>分野</th><th style="width:60px">問題数</th><th style="width:60px">割合</th><th>該当する小問</th></tr>
+    <tr><td>数と式の計算</td><td class="c">5</td><td class="c">15%</td><td class="n">1(1)①〜⑤</td></tr>
+    <tr><td>方程式</td><td class="c">3</td><td class="c">9%</td><td class="n">1(2)①〜③</td></tr>
+    <tr><td>数の性質・式の活用</td><td class="c">5</td><td class="c">15%</td><td class="n">2①〜⑤</td></tr>
+    <tr><td>関数</td><td class="c">9</td><td class="c">27%</td><td class="n">3①／4①〜④／6①〜④</td></tr>
+    <tr><td>図形</td><td class="c">4</td><td class="c">12%</td><td class="n">3②③④⑤</td></tr>
+    <tr><td>データ・確率</td><td class="c">3</td><td class="c">9%</td><td class="n">3⑥／5①②</td></tr>
+    <tr><td>規則性</td><td class="c">4</td><td class="c">12%</td><td class="n">7(1)〜(4)</td></tr>
+  </table>
+  <p>関数が全体の約4分の1を占め、しかも大問4・6は「グラフから条件を読み取る→式を立てる」型。
+  ここでの取りこぼしが点差に直結する。図形は1問1テーマの独立問題なので、公式さえ思い出せれば短時間で取り切れる。</p>
+
+  <h2>3．解答一覧</h2>
+  <table class="ans">
+    <tr><th style="width:80px">問題</th><th>解答</th><th style="width:80px">問題</th><th>解答</th></tr>
+    <tr><td class="c">1(1)①</td><td class="n">7</td><td class="c">3③</td><td class="n">116°</td></tr>
+    <tr><td class="c">1(1)②</td><td class="n">−2<i>xy</i><span class="sup">2</span></td><td class="c">3④</td><td class="n"><span class="fr"><b>8</b><b>3</b></span>π cm<span class="sup">3</span></td></tr>
+    <tr><td class="c">1(1)③</td><td class="n"><span class="fr"><b>4<i>a</i>+1</b><b>3</b></span></td><td class="c">3⑤</td><td class="n">120°</td></tr>
+    <tr><td class="c">1(1)④</td><td class="n">3<i>x</i><span class="sup">2</span>+6<i>x</i>−10</td><td class="c">3⑥</td><td class="n"><span class="fr"><b>5</b><b>12</b></span></td></tr>
+    <tr><td class="c">1(1)⑤</td><td class="n">9√<span class="rad">3</span></td><td class="c">4①</td><td class="n">1800 m</td></tr>
+    <tr><td class="c">1(2)①</td><td class="n"><i>x</i>=2</td><td class="c">4②</td><td class="n">1600 m</td></tr>
+    <tr><td class="c">1(2)②</td><td class="n"><i>x</i>=−1，<i>y</i>=−2</td><td class="c">4③</td><td class="n">4.5分後</td></tr>
+    <tr><td class="c">1(2)③</td><td class="n"><i>x</i>=1，−7</td><td class="c">4④</td><td class="n">イ</td></tr>
+    <tr><td class="c">2①</td><td class="n">ウ</td><td class="c">5①</td><td class="n">10（点）</td></tr>
+    <tr><td class="c">2②</td><td class="n"><i>a</i>=<span class="fr"><b>2<i>S</i></b><b><i>h</i></b></span>−<i>b</i>　<span style="color:#666">（=<span class="fr"><b>2<i>S</i>−<i>bh</i></b><b><i>h</i></b></span>）</span></td><td class="c">5②</td><td class="n"><i>x</i>=24</td></tr>
+    <tr><td class="c">2③</td><td class="n">(<i>a</i>+2<i>c</i>+<i>b</i>)(<i>a</i>+2<i>c</i>−<i>b</i>)</td><td class="c">6①</td><td class="n">C(3, 6)</td></tr>
+    <tr><td class="c">2④</td><td class="n">20</td><td class="c">6②</td><td class="n"><i>a</i>=<span class="fr"><b>10</b><b>3</b></span></td></tr>
+    <tr><td class="c">2⑤</td><td class="n"><i>n</i>=1，7</td><td class="c">6③</td><td class="n"><i>y</i>=−4<i>x</i>−4</td></tr>
+    <tr><td class="c">3①</td><td class="n"><i>a</i>=2</td><td class="c">6④</td><td class="n"><i>a</i>=<span class="fr"><b>2</b><b>3</b></span></td></tr>
+    <tr><td class="c">3②</td><td class="n">10本</td><td class="c">7(1)</td><td class="n">15枚</td></tr>
+    <tr><td class="c">7(2)</td><td class="n">㋐ <i>n</i>　㋑ <i>n</i><span class="sup">2</span>　㋒ <span class="fr"><b><i>n</i><span class="sup">2</span>−<i>n</i></b><b>2</b></span>　㋓ <span class="fr"><b><i>n</i><span class="sup">2</span>+<i>n</i></b><b>2</b></span></td><td class="c">7(3)</td><td class="n">190枚</td></tr>
+    <tr><td class="c">7(4)</td><td class="n">16番目</td><td class="c"></td><td></td></tr>
+  </table>
+
+<h2>4．詳解　大問1（数と式の計算・方程式）</h2>
+  <div class="two">
+    <div>
+      <div class="sol"><div class="q">(1)① <span class="mt">−5+3×4</span></div>
+        <span class="a">7</span>
+        <div class="w">乗法が先。−5+12＝7。</div></div>
+      <div class="sol"><div class="q">(1)② <span class="mt">8<i>x</i><span class="sup">2</span><i>y</i>÷(−2<i>x</i>)<span class="sup">2</span>×(−<i>xy</i>)</span></div>
+        <span class="a">−2<i>xy</i><span class="sup">2</span></span>
+        <div class="w"><span class="mt">(−2<i>x</i>)<span class="sup">2</span>=4<i>x</i><span class="sup">2</span></span>（マイナスも2乗される）。<br>
+        <span class="mt">8<i>x</i><span class="sup">2</span><i>y</i>×<span class="fr"><b>1</b><b>4<i>x</i><span class="sup">2</span></b></span>×(−<i>xy</i>)=−2<i>xy</i><span class="sup">2</span></span></div></div>
+      <div class="sol"><div class="q">(1)③ <span class="mt"><span class="fr"><b>5<i>a</i>−1</b><b>2</b></span>−<span class="fr"><b>7<i>a</i>−5</b><b>6</b></span></span></div>
+        <span class="a"><span class="fr"><b>4<i>a</i>+1</b><b>3</b></span></span>
+        <div class="w">通分して <span class="mt"><span class="fr"><b>3(5<i>a</i>−1)−(7<i>a</i>−5)</b><b>6</b></span>=<span class="fr"><b>8<i>a</i>+2</b><b>6</b></span>=<span class="fr"><b>4<i>a</i>+1</b><b>3</b></span></span>。
+        <b>後ろのかっこを外すときの符号</b>に注意。</div></div>
+      <div class="sol"><div class="q">(1)④ <span class="mt">(2<i>x</i>+1)(2<i>x</i>−1)−(<i>x</i>−3)<span class="sup">2</span></span></div>
+        <span class="a">3<i>x</i><span class="sup">2</span>+6<i>x</i>−10</span>
+        <div class="w"><span class="mt">(4<i>x</i><span class="sup">2</span>−1)−(<i>x</i><span class="sup">2</span>−6<i>x</i>+9)</span>。引く式は全部の項の符号が変わる。</div></div>
+    </div>
+    <div>
+      <div class="sol"><div class="q">(1)⑤ <span class="mt">√<span class="rad">27</span>+<span class="fr"><b>18</b><b>√<span class="rad">3</span></b></span></span></div>
+        <span class="a">9√<span class="rad">3</span></span>
+        <div class="w"><span class="mt">√<span class="rad">27</span>=3√<span class="rad">3</span></span>、
+        <span class="mt"><span class="fr"><b>18</b><b>√<span class="rad">3</span></b></span>=<span class="fr"><b>18√<span class="rad">3</span></b><b>3</b></span>=6√<span class="rad">3</span></span>（分母の有理化）。合わせて<span class="mt">9√<span class="rad">3</span></span>。</div></div>
+      <div class="sol"><div class="q">(2)① <span class="mt">4<i>x</i>+1=13−2<i>x</i></span></div>
+        <span class="a"><i>x</i>=2</span>
+        <div class="w"><span class="mt">6<i>x</i>=12</span>。</div></div>
+      <div class="sol"><div class="q">(2)② <span class="mt">2<i>x</i>−5<i>y</i>=8，<i>y</i>=3<i>x</i>+1</span></div>
+        <span class="a"><i>x</i>=−1，<i>y</i>=−2</span>
+        <div class="w">代入法。<span class="mt">2<i>x</i>−5(3<i>x</i>+1)=8 → −13<i>x</i>=13 → <i>x</i>=−1</span>、<span class="mt"><i>y</i>=3(−1)+1=−2</span>。</div></div>
+      <div class="sol"><div class="q">(2)③ <span class="mt">2(<i>x</i>+3)<span class="sup">2</span>=32</span></div>
+        <span class="a"><i>x</i>=1，−7</span>
+        <div class="w"><span class="mt">(<i>x</i>+3)<span class="sup">2</span>=16 → <i>x</i>+3=±4</span>。
+        <b>±を忘れて解を1つしか書かない</b>のが最頻出ミス。</div></div>
+    </div>
+  </div>
+
+  <h2>5．詳解　大問2（数の性質・式の活用）</h2>
+  <div class="sol"><div class="q">① <i>a</i>&lt;0，<i>b</i>&gt;0 のとき、いつも正になる式</div>
+    <span class="a">ウ　−<i>a</i>+<i>b</i></span>
+    <div class="w"><i>a</i>が負なので<span class="mt">−<i>a</i></span>は正。正＋正はいつも正。
+    ア・エは大きさによって符号が変わり、イは（負）−（正）で必ず負。
+    迷ったら<span class="mt"><i>a</i>=−1，<i>b</i>=2</span>と<span class="mt"><i>a</i>=−3，<i>b</i>=1</span>の2通りを代入して確かめる。</div></div>
+  <div class="sol"><div class="q">② <span class="mt"><i>S</i>=<span class="fr"><b>1</b><b>2</b></span><i>h</i>(<i>a</i>+<i>b</i>)</span> を<i>a</i>について解く</div>
+    <span class="a"><i>a</i>=<span class="fr"><b>2<i>S</i></b><b><i>h</i></b></span>−<i>b</i></span>
+    <div class="w">両辺2倍 → <span class="mt">2<i>S</i>=<i>h</i>(<i>a</i>+<i>b</i>)</span>、<i>h</i>でわって <span class="mt"><i>a</i>+<i>b</i>=<span class="fr"><b>2<i>S</i></b><b><i>h</i></b></span></span>。台形の面積公式の変形。</div></div>
+  <div class="sol"><div class="q">③ <span class="mt"><i>a</i><span class="sup">2</span>−<i>b</i><span class="sup">2</span>+4<i>c</i><span class="sup">2</span>+4<i>ac</i></span> を因数分解</div>
+    <span class="a">(<i>a</i>+2<i>c</i>+<i>b</i>)(<i>a</i>+2<i>c</i>−<i>b</i>)</span>
+    <div class="w"><b>4項は「3項＋1項」に組み替える</b>のが定石。
+    <span class="mt">(<i>a</i><span class="sup">2</span>+4<i>ac</i>+4<i>c</i><span class="sup">2</span>)−<i>b</i><span class="sup">2</span>=(<i>a</i>+2<i>c</i>)<span class="sup">2</span>−<i>b</i><span class="sup">2</span></span> と見れば、あとは平方の差。</div></div>
+  <div class="sol"><div class="q">④ <span class="mt"><i>x</i>=√<span class="rad">5</span>+√<span class="rad">2</span>，<i>y</i>=√<span class="rad">5</span>−√<span class="rad">2</span></span> のときの <span class="mt"><i>x</i><span class="sup">2</span>+<i>y</i><span class="sup">2</span>+2<i>xy</i></span></div>
+    <span class="a">20</span>
+    <div class="w">そのまま代入せず、<b>先に因数分解</b>：<span class="mt"><i>x</i><span class="sup">2</span>+2<i>xy</i>+<i>y</i><span class="sup">2</span>=(<i>x</i>+<i>y</i>)<span class="sup">2</span></span>。
+    <span class="mt"><i>x</i>+<i>y</i>=2√<span class="rad">5</span></span> だから <span class="mt">(2√<span class="rad">5</span>)<span class="sup">2</span>=20</span>。</div></div>
+  <div class="sol"><div class="q">⑤ <span class="mt">√<span class="rad"><i>n</i><span class="sup">2</span>+15</span></span> が整数となる正の整数<i>n</i></div>
+    <span class="a"><i>n</i>=1，7</span>
+    <div class="w"><span class="mt"><i>n</i><span class="sup">2</span>+15=<i>m</i><span class="sup">2</span></span>とおくと <span class="mt">(<i>m</i>+<i>n</i>)(<i>m</i>−<i>n</i>)=15</span>。
+    <span class="mt"><i>m</i>+<i>n</i>&gt;<i>m</i>−<i>n</i>&gt;0</span> より <span class="mt">(15,1)</span> と <span class="mt">(5,3)</span> の2通り。<br>
+    <span class="mt">(<i>m</i>,<i>n</i>)=(8,7)</span>、<span class="mt">(4,1)</span>。<b>「すべて求めよ」なので2つとも書く。</b></div></div>
+
+<h2>6．詳解　大問3（小問集合）</h2>
+  <div class="sol"><div class="q">① 3点 <span class="mt">A(−1, 7)，B(5, −5)，C(<i>a</i>, 1)</span> が一直線上</div>
+    <span class="a"><i>a</i>=2</span>
+    <div class="w">直線ABの傾き＝<span class="mt"><span class="fr"><b>−5−7</b><b>5−(−1)</b></span>=−2</span>、式は <span class="mt"><i>y</i>=−2<i>x</i>+5</span>。
+    <span class="mt"><i>y</i>=1</span> を代入して <span class="mt">1=−2<i>a</i>+5</span>、<span class="mt"><i>a</i>=2</span>。
+    <b>「AB間の傾き＝AC間の傾き」</b>として <span class="mt"><span class="fr"><b>1−7</b><b><i>a</i>+1</b></span>=−2</span> と立ててもよい。</div></div>
+  <div class="sol"><div class="q">② 面の数が6つである角錐の辺の数</div>
+    <span class="a">10本</span>
+    <div class="w">角錐の面は「底面1＋側面<i>n</i>」。<span class="mt">1+<i>n</i>=6</span> より <b>五角錐</b>。
+    辺は底面5本＋側面5本＝10本。<span style="color:#8a5a20">面6つ＝六角錐と早合点しない。</span></div></div>
+  <div class="sol"><div class="q">③ 正五角形と平行線　∠CGE</div>
+    <span class="a">116°</span>
+    <div class="w" style="display:flex;gap:12px;align-items:flex-start">
+      <div style="flex:1">
+        正五角形の1つの内角は <span class="mt">180×(5−2)÷5=108°</span>。<br>
+        <b>手順1</b>　△ABFで <span class="mt">∠AFB=180−108−28=44°</span>。<br>
+        <b>手順2</b>　直線ℓと辺DEの延長との交点をPとする。<br>
+        　A，F，Eは一直線、B，F，Pも一直線なので <span class="mt">∠EFP=∠AFB=44°</span>（対頂角）。<br>
+        <b>手順3</b>　△EFPで <span class="mt">∠FEP=180−108=72°</span>（∠AEDの外角）だから<br>
+        　<span class="mt">∠EPF=180−44−72=64°</span>。<br>
+        <b>手順4</b>　<span class="mt">ℓ∥<i>m</i></span> なので同位角より <span class="mt">∠CGD=∠EPF=64°</span>。<br>
+        　D，G，Eは一直線だから <span class="mt">∠CGE=180−64=116°</span>。
+      </div>
+      <svg width="210" height="180" viewBox="0 0 235 200" style="flex:none">
+        <polygon points="110,27 45.3,74 70,150 150,150 174.7,74" class="fg"/>
+        <line x1="30" y1="76.1" x2="215" y2="50.2" class="fg"/>
+        <line x1="45" y1="153.5" x2="200" y2="131.8" class="fg"/>
+        <line x1="150" y1="150" x2="190" y2="27" class="fg dt"/>
+        <circle cx="180.8" cy="55" r="2.4" fill="#b45309" stroke="none"/>
+        <circle cx="153.9" cy="138.2" r="2.4" fill="#333" stroke="none"/>
+        <circle cx="153.7" cy="58.8" r="2.4" fill="#333" stroke="none"/>
+        <text x="110" y="20" text-anchor="middle">A</text>
+        <text x="36" y="72" text-anchor="end">B</text><text x="62" y="163">C</text>
+        <text x="150" y="164">D</text><text x="182" y="76">E</text>
+        <text x="144" y="52">F</text><text x="158" y="136">G</text>
+        <text x="186" y="48" fill="#b45309">P</text>
+        <text x="218" y="46" style="font-style:italic">ℓ</text><text x="204" y="130" style="font-style:italic">m</text>
+        <text x="74" y="80" style="font-size:9.5px">28°</text>
+      </svg>
+    </div></div>
+  <div class="sol"><div class="q">④ 弓形を半径OAを軸として1回転させた立体の体積</div>
+    <span class="a"><span class="fr"><b>8</b><b>3</b></span>π cm<span class="sup">3</span></span>
+    <div class="w"><b>「おうぎ形を回した立体」−「三角形を回した立体」</b>と考える。<br>
+    ・おうぎ形OAB（中心角90°）を回すと<b>半径2の半球</b>：<span class="mt"><span class="fr"><b>4</b><b>3</b></span>π×2<span class="sup">3</span>×<span class="fr"><b>1</b><b>2</b></span>=<span class="fr"><b>16</b><b>3</b></span>π</span><br>
+    ・△OABを回すと<b>底面の半径2、高さ2の円錐</b>：<span class="mt"><span class="fr"><b>1</b><b>3</b></span>π×2<span class="sup">2</span>×2=<span class="fr"><b>8</b><b>3</b></span>π</span><br>
+    差をとって <span class="mt"><span class="fr"><b>16</b><b>3</b></span>π−<span class="fr"><b>8</b><b>3</b></span>π=<span class="fr"><b>8</b><b>3</b></span>π</span>。</div></div>
+  <div class="sol"><div class="q">⑤ 底面の半径2cm、母線6cmの円錐の展開図の中心角</div>
+    <span class="a">120°</span>
+    <div class="w">おうぎ形の弧の長さ＝底面の円周だから <span class="mt">2π×6×<span class="fr"><b><i>x</i></b><b>360</b></span>=2π×2</span>。<br>
+    公式化すると <b>中心角＝360°×(底面の半径)÷(母線)</b>＝<span class="mt">360×<span class="fr"><b>2</b><b>6</b></span>=120°</span>。</div></div>
+  <div class="sol"><div class="q">⑥ 大小2つのさいころの目の和が素数</div>
+    <span class="a"><span class="fr"><b>5</b><b>12</b></span></span>
+    <div class="w">和は2〜12。素数は <span class="mt">2, 3, 5, 7, 11</span>。<br>
+    通り数は <span class="mt">1+2+4+6+2=15</span>（和7が6通りで最多）。<span class="mt"><span class="fr"><b>15</b><b>36</b></span>=<span class="fr"><b>5</b><b>12</b></span></span>。
+    <span style="color:#8a5a20">9は素数ではない（3×3）ことに注意。</span></div></div>
+
+  <h2>7．詳解　大問4（1次関数の利用）</h2>
+  <div class="sol"><div class="q">① A地点とB地点との距離</div>
+    <span class="a">1800 m</span>
+    <div class="w">グラフより、あおいさんは<b>9分でB地点</b>に着いている。<span class="mt">200×9=1800</span>。</div></div>
+  <div class="sol"><div class="q">② 10分後のあおいさんのA地点からの距離</div>
+    <span class="a">1600 m</span>
+    <div class="w">9分で折り返し、そこから1分戻っているので <span class="mt">1800−200×1=1600</span>。</div></div>
+  <div class="sol"><div class="q">③ ゆうさんがA地点に戻るのは、あおいさんが戻ってから何分後か</div>
+    <span class="a">4.5分後</span>
+    <div class="w"><b>手順1</b>　②より、10分後の2人は同じ位置1600m。ゆうさんはまだ行きなので
+    速さは <span class="mt">1600÷10=160</span>（分速160m）。<br>
+    <b>手順2</b>　ゆうさんの往復＝<span class="mt">1800×2=3600</span>m を分速160mで走るので <span class="mt">3600÷160=22.5</span>分。<br>
+    <b>手順3</b>　あおいさんは <span class="mt">3600÷200=18</span>分。<span class="mt">22.5−18=4.5</span>分後。</div></div>
+  <div class="sol"><div class="q">④ 2人の距離のグラフ</div>
+    <span class="a">イ</span>
+    <div class="w" style="display:flex;gap:12px;align-items:flex-start">
+      <div style="flex:1">
+        「距離の変化」＝2人のグラフの<b>たての差</b>。区間ごとに傾きが変わる。<br>
+        ・<span class="mt">0〜9分</span>：同じ向き。差は <span class="mt">(200−160)<i>x</i>=40<i>x</i></span> → 9分で<b>360m</b>（ゆるやかに増加）<br>
+        ・<span class="mt">9〜10分</span>：向かい合うので急速に接近し、<b>10分でちょうど0</b>（すれちがい）<br>
+        ・<span class="mt">10〜11.25分</span>：反対向きで急速に離れ、<b>450m</b><br>
+        ・<span class="mt">11.25〜18分</span>：同じ向き（ともにA方向）で <span class="mt">40<i>x</i></span> の割合、18分で<b>720m</b><br>
+        ・<span class="mt">18〜22.5分</span>：あおいさんは到着済みなので分速160mで縮まり、22.5分で0<br>
+        <b>小さい山→10分で0→大きい山→減少</b>という形はイだけ。
+      </div>
+      <svg width="200" height="130" viewBox="0 0 210 140" style="flex:none">
+        <line x1="24" y1="16" x2="24" y2="106" class="fg"/>
+        <line x1="24" y1="106" x2="200" y2="106" class="fg"/>
+        <polyline points="24,106 96,70 104,106 114,61 168,34 204,106" class="fg" style="stroke:#3d5a80;stroke-width:1.6"/>
+        <line x1="104" y1="106" x2="104" y2="61" class="fg dt"/>
+        <text x="18" y="118" style="font-size:9.5px">0</text>
+        <text x="96" y="118" style="font-size:9.5px">9</text>
+        <text x="114" y="118" style="font-size:9.5px">10</text>
+        <text x="164" y="118" style="font-size:9.5px">18</text>
+        <text x="196" y="118" style="font-size:9.5px">22.5</text>
+        <text x="80" y="66" style="font-size:9.5px">360</text>
+        <text x="150" y="30" style="font-size:9.5px">720</text>
+        <text x="24" y="12" style="font-size:9.5px">(m)</text>
+      </svg>
+    </div></div>
+
+<h2>8．詳解　大問5（箱ひげ図）</h2>
+  <div class="sol"><div class="q">① 四分位範囲が最小となる教科の四分位範囲</div>
+    <span class="a">10（点）</span>
+    <div class="w"><b>四分位範囲＝Q<span class="sub">3</span>−Q<span class="sub">1</span>＝箱の横はば</b>。図1から読み取ると</div>
+    <table style="width:60%;margin-top:4px">
+      <tr><th>教科</th><th>Q<span class="sub">1</span></th><th>Q<span class="sub">3</span></th><th>四分位範囲</th></tr>
+      <tr><td class="c">国語</td><td class="n">24</td><td class="n">34</td><td class="n"><b>10</b></td></tr>
+      <tr><td class="c">数学</td><td class="n">18</td><td class="n">32</td><td class="n">14</td></tr>
+      <tr><td class="c">英語</td><td class="n">22</td><td class="n">34</td><td class="n">12</td></tr>
+    </table>
+    <div class="w">箱がいちばん<b>短い</b>のは国語。答えは教科名ではなく<b>四分位範囲の値</b>を答える。</div></div>
+  <div class="sol"><div class="q">② 図2のデータから<i>x</i>の値</div>
+    <span class="a"><i>x</i>=24</span>
+    <div class="w"><b>手順1</b>　<i>x</i>以外の11個を小さい順に並べる。<br>
+    <span class="mt">10, 12, 16, 20, 20, 28, 30, 30, 34, 40, 46</span><br>
+    <b>手順2</b>　データは12個なので、中央値は<b>6番目と7番目の平均</b>。図1の数学の箱の真ん中の線から<b>中央値は26</b>。<br>
+    <b>手順3</b>　<span class="mt"><i>x</i>≧20</span> とすると6番目と7番目は <span class="mt"><i>x</i></span> と28になり、
+    <span class="mt"><span class="fr"><b><i>x</i>+28</b><b>2</b></span>=26 → <i>x</i>=24</span>。<br>
+    <b>検算</b>　<span class="mt">10,12,16,20,20,<b>24</b>,28,30,30,34,40,46</span> →
+    <span class="mt">Q<span class="sub">1</span>=<span class="fr"><b>16+20</b><b>2</b></span>=18</span>、
+    <span class="mt">Q<span class="sub">3</span>=<span class="fr"><b>30+34</b><b>2</b></span>=32</span>、最小10・最大46。図1の数学の箱ひげ図と完全に一致する。</div></div>
+  <div class="tip"><b>四分位数の位置（12個のとき）</b>　小さい順に並べて
+  Q<span class="sub">1</span>＝3番目と4番目の平均、Q<span class="sub">2</span>（中央値）＝6番目と7番目の平均、Q<span class="sub">3</span>＝9番目と10番目の平均。
+  「12÷4＝3番目」ではないので注意。</div>
+
+  <h2>9．詳解　大問6（反比例と比例の融合）</h2>
+  <p style="margin-top:2px">まず座標を確定させる。<span class="mt"><i>y</i>=−<span class="fr"><b>6</b><b><i>x</i></b></span></span> に
+  <span class="mt"><i>x</i>=−6</span> を代入して <b>A(−6, 1)</b>、<span class="mt"><i>x</i>=3</span> を代入して <b>B(3, −2)</b>。
+  Cは <span class="mt"><i>y</i>=<i>ax</i></span> 上で <span class="mt"><i>x</i>=3</span> だから <b>C(3, 3<i>a</i>)</b>。D(3, 1) は与えられている。</p>
+  <div class="sol"><div class="q">① <i>a</i>＝2のときの点Cの座標</div>
+    <span class="a">C(3, 6)</span>
+    <div class="w"><span class="mt"><i>y</i>=2×3=6</span>。</div></div>
+  <div class="sol"><div class="q">② △ADCが二等辺三角形になる<i>a</i></div>
+    <span class="a"><i>a</i>=<span class="fr"><b>10</b><b>3</b></span></span>
+    <div class="w">AとDは<b>どちらも<i>y</i>座標が1</b>なのでADは横向きの線分で <span class="mt">AD=3−(−6)=9</span>。
+    CとDは<b>どちらも<i>x</i>座標が3</b>なのでDCは縦向きで <span class="mt">DC=3<i>a</i>−1</span>。<br>
+    つまり<b>∠ADC＝90°の直角三角形</b>。斜辺ACが必ずいちばん長いので、
+    等しくなり得るのは <span class="mt">AD=DC</span> だけ。<br>
+    <span class="mt">3<i>a</i>−1=9 → <i>a</i>=<span class="fr"><b>10</b><b>3</b></span></span>。</div></div>
+  <div class="sol"><div class="q">③ 直線ℓを対称の軸として <span class="mt"><i>y</i>=4<i>x</i></span> と線対称な直線</div>
+    <span class="a"><i>y</i>=−4<i>x</i>−4</span>
+    <div class="w">ℓはB(3,−2)を通り<i>x</i>軸に平行だから <span class="mt"><i>y</i>=−2</span>。<br>
+    <span class="mt"><i>y</i>=−2</span> についての対称移動は
+    <span class="mt">(<i>x</i>, <i>y</i>) → (<i>x</i>, −4−<i>y</i>)</span>（<span class="mt"><i>y</i></span>と<span class="mt"><i>y</i>′</span>の平均が−2）。<br>
+    <span class="mt">−4−<i>y</i>′=4<i>x</i></span> より <span class="mt"><i>y</i>′=−4<i>x</i>−4</span>。<br>
+    <span style="color:#555">別解：傾きは符号が反転して−4。交点は<span class="mt"><i>y</i>=4<i>x</i></span>と<span class="mt"><i>y</i>=−2</span>の交点
+    <span class="mt">(−<span class="fr"><b>1</b><b>2</b></span>, −2)</span> で不変。ここを通る傾き−4の直線を求めてもよい。</span></div></div>
+  <div class="sol"><div class="q">④ 四角形AEDCの面積が△ABCの面積の<span class="fr"><b>1</b><b>2</b></span>倍になる<i>a</i></div>
+    <span class="a"><i>a</i>=<span class="fr"><b>2</b><b>3</b></span></span>
+    <div class="w"><b>手順1（Eを求める）</b>　直線ABは
+    <span class="mt"><i>y</i>=−<span class="fr"><b>1</b><b>3</b></span><i>x</i>−1</span>。<span class="mt"><i>y</i>=0</span> として <b>E(−3, 0)</b>。<br>
+    <b>手順2（△ABC）</b>　BCは<span class="mt"><i>x</i>=3</span>上の縦の線分で <span class="mt">BC=3<i>a</i>+2</span>、
+    Aからの横の距離は <span class="mt">3−(−6)=9</span>。<br>
+    　<span class="mt">△ABC=(3<i>a</i>+2)×9÷2</span><br>
+    <b>手順3（四角形AEDC）</b>　対角線ADで2つに分ける。ADは<span class="mt"><i>y</i>=1</span>上で長さ9。<br>
+    　<span class="mt">△ADC=9×(3<i>a</i>−1)÷2</span>、<span class="mt">△AED=9×1÷2</span>（Eの<i>y</i>座標が0なので高さ1）<br>
+    　合計 <span class="mt">=<span class="fr"><b>9(3<i>a</i>−1)+9</b><b>2</b></span>=<span class="fr"><b>27<i>a</i></b><b>2</b></span></span><br>
+    <b>手順4</b>　<span class="mt"><span class="fr"><b>27<i>a</i></b><b>2</b></span>=<span class="fr"><b>1</b><b>2</b></span>×<span class="fr"><b>9(3<i>a</i>+2)</b><b>2</b></span></span>
+    → <span class="mt">54<i>a</i>=27<i>a</i>+18</span> → <span class="mt"><i>a</i>=<span class="fr"><b>2</b><b>3</b></span></span>。
+    （このとき<span class="mt">C(3, 2)</span>でDより上にあり、条件に合う。）</div></div>
+
+<h2>10．詳解　大問7（規則性）</h2>
+  <p style="margin-top:2px">まず<b>表にして規則をつかむ</b>。<i>n</i>番目は1辺<i>n</i>枚の正方形なので合計は<span class="mt"><i>n</i><span class="sup">2</span></span>枚。
+  <i>n</i>回目に追加されるのは <span class="mt"><i>n</i><span class="sup">2</span>−(<i>n</i>−1)<span class="sup">2</span>=2<i>n</i>−1</span> 枚で、
+  <b>偶数回は灰色、奇数回は白色</b>。</p>
+  <table style="width:82%">
+    <tr><th><i>n</i>番目</th><td class="n">1</td><td class="n">2</td><td class="n">3</td><td class="n">4</td><td class="n">5</td><td class="n">6</td><td class="n">7</td><td class="n">…</td></tr>
+    <tr><th>追加</th><td class="n">白1</td><td class="n">灰3</td><td class="n">白5</td><td class="n">灰7</td><td class="n">白9</td><td class="n">灰11</td><td class="n">白13</td><td class="n">…</td></tr>
+    <tr><th>白の合計</th><td class="n">1</td><td class="n">1</td><td class="n">6</td><td class="n">6</td><td class="n"><b>15</b></td><td class="n">15</td><td class="n">28</td><td class="n">…</td></tr>
+    <tr><th>灰の合計</th><td class="n">0</td><td class="n">3</td><td class="n">3</td><td class="n">10</td><td class="n">10</td><td class="n">21</td><td class="n">21</td><td class="n">…</td></tr>
+    <tr><th>合計 <span class="mt"><i>n</i><span class="sup">2</span></span></th><td class="n">1</td><td class="n">4</td><td class="n">9</td><td class="n">16</td><td class="n">25</td><td class="n">36</td><td class="n">49</td><td class="n">…</td></tr>
+  </table>
+  <div class="sol"><div class="q">(1) 5番目の白色のタイルの枚数</div>
+    <span class="a">15枚</span>
+    <div class="w">5回目は奇数回なので白を <span class="mt">5<span class="sup">2</span>−4<span class="sup">2</span>=9</span> 枚追加。<span class="mt">6+9=15</span>枚。</div></div>
+  <div class="sol"><div class="q">(2) ㋐〜㋓に当てはまる式</div>
+    <span class="a">㋐ <i>n</i>　　㋑ <i>n</i><span class="sup">2</span>　　㋒ <span class="fr"><b><i>n</i><span class="sup">2</span>−<i>n</i></b><b>2</b></span>　　㋓ <span class="fr"><b><i>n</i><span class="sup">2</span>+<i>n</i></b><b>2</b></span></span>
+    <div class="w"><b>㋐</b>　表で差をみると <span class="mt"><i>n</i>=2</span>で<span class="mt">3−1=2</span>、<span class="mt"><i>n</i>=4</span>で<span class="mt">10−6=4</span>、<span class="mt"><i>n</i>=6</span>で<span class="mt">21−15=6</span>。差は<b><i>n</i></b>。<br>
+    <b>㋑</b>　1辺<i>n</i>枚だから合計は <span class="mt"><i>n</i><span class="sup">2</span></span>。<br>
+    <b>㋒</b>　<span class="mt">T+(T+<i>n</i>)=<i>n</i><span class="sup">2</span></span> → <span class="mt">2T=<i>n</i><span class="sup">2</span>−<i>n</i></span> → <span class="mt">T=<span class="fr"><b><i>n</i><span class="sup">2</span>−<i>n</i></b><b>2</b></span></span>。<br>
+    <b>㋓</b>　灰色は <span class="mt">T+<i>n</i>=<span class="fr"><b><i>n</i><span class="sup">2</span>−<i>n</i></b><b>2</b></span>+<i>n</i>=<span class="fr"><b><i>n</i><span class="sup">2</span>+<i>n</i></b><b>2</b></span></span>。<br>
+    <span style="color:#555">検算：<span class="mt"><i>n</i>=4</span> で白<span class="mt">(16−4)÷2=6</span>、灰<span class="mt">(16+4)÷2=10</span>。問題文の値と一致。</span></div></div>
+  <div class="sol"><div class="q">(3) 19番目の白色のタイルの枚数</div>
+    <span class="a">190枚</span>
+    <div class="w"><b>19は奇数</b>なので(2)の式はそのまま使えない。<b>奇数のときは白と灰が入れかわる</b>（最後に足したのが白だから白が多い）。<br>
+    　白 <span class="mt">=<span class="fr"><b><i>n</i><span class="sup">2</span>+<i>n</i></b><b>2</b></span>=<span class="fr"><b>19<span class="sup">2</span>+19</b><b>2</b></span>=<span class="fr"><b>380</b><b>2</b></span>=190</span>（灰は<span class="mt">(361−19)÷2=171</span>枚）。<br>
+    <span style="color:#555">別解：奇数回に追加した白の和 <span class="mt">1+5+9+…+37</span>（10個の等差数列）＝<span class="mt">(1+37)×10÷2=190</span>。</span></div></div>
+  <div class="sol"><div class="q">(4) 白・灰が150枚ずつのとき何番目まで作れるか</div>
+    <span class="a">16番目</span>
+    <div class="w"><b>多い方の色</b>がいつも <span class="mt"><span class="fr"><b><i>n</i><span class="sup">2</span>+<i>n</i></b><b>2</b></span></span> 枚なので、これが150以下であればよい。<br>
+    　<span class="mt"><i>n</i><span class="sup">2</span>+<i>n</i>≦300</span>　→　<span class="mt"><i>n</i>=16</span> のとき <span class="mt">16×17=272</span>（○）、<span class="mt"><i>n</i>=17</span> のとき <span class="mt">17×18=306</span>（×）<br>
+    <b>確かめ</b>　16番目：白<span class="mt">(256−16)÷2=120</span>枚、灰<span class="mt">(256+16)÷2=136</span>枚 → どちらも150枚以内。<br>
+    　17番目：白<span class="mt">(289+17)÷2=153</span>枚 → 150枚では足りない。よって<b>16番目</b>。<br>
+    <span style="color:#8a5a20">「合計300枚だから <span class="mt"><i>n</i><span class="sup">2</span>≦300</span> → 17番目」としない。色ごとに150枚という制限がポイント。</span></div></div>
+
+  <h2>11．つまずきやすいポイント</h2>
+  <table>
+    <tr><th style="width:70px">問題</th><th>ありがちなミス</th><th>対策</th></tr>
+    <tr><td class="c">1(1)②</td><td><span class="mt">(−2<i>x</i>)<span class="sup">2</span></span> を <span class="mt">−4<i>x</i><span class="sup">2</span></span> としてしまう</td><td>かっこ全体の2乗は符号も2乗。先に <span class="mt">4<i>x</i><span class="sup">2</span></span> と書き直してから計算する</td></tr>
+    <tr><td class="c">1(1)③</td><td>引く方の分子のかっこを外す符号ミス</td><td>分子を<span class="mt">3(5<i>a</i>−1)−(7<i>a</i>−5)</span>と<b>かっこ付きで</b>書いてから外す</td></tr>
+    <tr><td class="c">1(2)③</td><td><span class="mt">±</span>を忘れて解を1つだけ書く</td><td>平方根の形にしたら必ず解は2つ、と機械的に確認</td></tr>
+    <tr><td class="c">2③</td><td>4項をどう組むか分からず手が止まる</td><td><b>2乗になる3項を探す</b>のが定石（<span class="mt"><i>a</i><span class="sup">2</span>+4<i>ac</i>+4<i>c</i><span class="sup">2</span></span>）</td></tr>
+    <tr><td class="c">2⑤</td><td>1つ見つけて満足する</td><td>「すべて」＝積が15になる組をもれなく調べる</td></tr>
+    <tr><td class="c">3②</td><td>面6つ→六角錐と早合点</td><td>角錐の面は<b>底面1＋側面<i>n</i></b>。図をかいて数える</td></tr>
+    <tr><td class="c">3④</td><td>弓形の回転体をイメージできない</td><td><b>おうぎ形の回転（半球）−三角形の回転（円錐）</b>の引き算に分解</td></tr>
+    <tr><td class="c">4③</td><td>ゆうさんの速さが与えられていないので詰まる</td><td>②の結果（10分で1600m）が<b>そのまま速さの情報</b>になっている</td></tr>
+    <tr><td class="c">4④</td><td>2人のグラフの形をそのまま選ぶ</td><td>聞かれているのは<b>差</b>。区間ごとに「近づく／離れる」と傾きを書き出す</td></tr>
+    <tr><td class="c">5①</td><td>範囲（最大−最小）と混同する</td><td>四分位範囲＝<b>箱の横はば</b>＝Q<span class="sub">3</span>−Q<span class="sub">1</span></td></tr>
+    <tr><td class="c">6②</td><td>3通りの場合分けをして混乱する</td><td>∠ADC＝90°に気づけば<b>AD＝DCの1通り</b>だけ</td></tr>
+    <tr><td class="c">7(3)</td><td>(2)の式をそのまま19に代入する</td><td>(2)は<b>偶数のとき</b>の式。奇数では白と灰が入れかわる</td></tr>
+  </table>
+
+  <h2>12．復習の優先順位</h2>
+  <ul>
+    <li><b>最優先</b>　大問1・2（計13問／全体の約4割）。ここは落とすと致命的。特に符号・かっこ・±の3点。</li>
+    <li><b>次に</b>　大問4・6の関数。「グラフから数値を読む → 式を立てる → 交点や面積」の流れを、同じ型の問題で3〜4回繰り返す。</li>
+    <li><b>短時間で伸びる</b>　大問3の図形（角錐の辺、円錐の展開図、回転体）と大問5の箱ひげ図。<b>公式と用語の定義</b>を覚えるだけで得点になる。</li>
+    <li><b>最後に</b>　大問7の規則性。表をかいて差を調べる→文字式にする、という手順そのものを練習する。</li>
+  </ul>
+</div>

@@ -1,0 +1,457 @@
+<title>数学 実力テスト（大問1〜7）</title>
+<style>
+  :root{--ink:#111;--line:#222;--paper:#fff}
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:#8c8f94;color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP","Meiryo",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    width:880px;min-height:1245px;margin:26px auto;background:var(--paper);
+    padding:38px 44px 30px;position:relative;box-shadow:0 3px 14px rgba(0,0,0,.35);
+  }
+  .big{display:flex;gap:9px;margin:0 0 6px}
+  .bn{flex:none;width:24px;font-size:17px;font-weight:700;line-height:1.5}
+  .bb{flex:1;min-width:0;position:relative}
+  .t{font-size:13.4px;line-height:1.95;text-indent:0}
+  .it{font-size:13.4px;line-height:1.95;display:flex;margin:2px 0 0}
+  .it .n{flex:none;width:26px}
+  .it .b{flex:1;min-width:0}
+  .gap{height:52px}
+  .gap.s{height:34px}
+  .gap.l{height:78px}
+  .row{display:flex;gap:10px;margin:4px 0 0}
+  .cell{flex:1;display:flex;font-size:13.4px;line-height:1.9}
+  .cell .n{flex:none;width:24px}
+  i,.v{font-family:"Times New Roman",Times,serif;font-style:italic}
+  .mt{font-family:"Times New Roman",Times,serif;font-size:15px}
+  .sup{font-size:.72em;vertical-align:.55em;font-family:"Times New Roman",serif;font-style:normal}
+  .frac{display:inline-block;vertical-align:-12px;text-indent:0;margin:0 3px;text-align:center;font-family:"Times New Roman",serif}
+  .frac b{display:block;font-weight:400;font-size:12.5px;line-height:1.3;padding:0 4px}
+  .frac b:first-child{border-bottom:1.3px solid #111}
+  .sys{display:inline-flex;align-items:center;vertical-align:-20px;margin:0 3px;text-indent:0}
+  .sys .br{font-size:29px;line-height:.72;font-weight:300;display:inline-block;margin:0 3px 0 1px;font-family:"Times New Roman",serif}
+  .sys .eq{display:inline-flex;flex-direction:column;font-family:"Times New Roman",serif;font-size:14px;line-height:1.5;padding:0 1px}
+  .sq{display:inline-block;vertical-align:middle;font-family:"Times New Roman",serif;font-size:15px}
+  .sq em{font-style:normal;display:inline-block;border:1.2px solid #111;padding:0 10px;margin:0 2px;line-height:1.6;min-width:34px;text-align:center}
+  .rulebox{border:1.6px solid #111;padding:8px 12px 10px;margin:6px 0 10px;font-size:13.2px;line-height:1.95}
+  .rulebox .hd{margin-bottom:2px}
+  .rulebox .li{display:flex;text-indent:0}
+  .rulebox .li .n{flex:none;width:22px}
+  .rad{border-top:1.05px solid #111;padding:0 2px 0 1px;margin-left:-1px}
+  .nw{white-space:nowrap}
+  .databox{border:1.4px solid #111;display:inline-block;padding:4px 14px;font-family:"Times New Roman",serif;font-size:14px;letter-spacing:.02em}
+  .figR{float:right;margin:0 0 4px 12px}
+  .figC{display:block;margin:6px auto 4px}
+  svg.f path,svg.f line,svg.f polyline,svg.f polygon,svg.f circle,svg.f rect,svg.f ellipse{
+    fill:none;stroke:var(--line);stroke-width:1.35;stroke-linejoin:round;stroke-linecap:round}
+  svg.f .d{stroke-dasharray:4 3.4;stroke-width:1.05}
+  svg.f .dt{stroke-dasharray:1.6 2.6;stroke-width:1}
+  svg.f .thin{stroke-width:1}
+  svg.f .gr{fill:#8e9198;stroke:none}
+  svg.f .wh{fill:#fff}
+  svg.f text{stroke:none;fill:var(--ink);font:12px "Helvetica Neue",Arial,sans-serif}
+  svg.f .u{font-size:10.5px}
+  svg.f .iv{font:italic 12.5px "Times New Roman",serif}
+  ruby{ruby-position:over}
+  rt{font-size:7.6px;font-weight:400;letter-spacing:0}
+  .pno{position:absolute;bottom:14px;right:44px;font-size:11px;color:#666}
+  @media print{
+    body{background:#fff}
+    .sheet{margin:0 auto;box-shadow:none;min-height:1240px;page-break-after:always}
+    .sheet:last-of-type{page-break-after:auto}
+    @page{size:A4;margin:9mm}
+  }
+</style>
+
+<!-- ============ 1ページ ============ -->
+<div class="sheet">
+  <div class="big">
+    <div class="bn">1.</div>
+    <div class="bb">
+      <div class="t">次の問いに答えなさい。</div>
+      <div class="it"><span class="n">(1)</span><span class="b">次の計算をしなさい。</span></div>
+      <div class="row">
+        <div class="cell"><span class="n">①</span><span class="mt">−5+3×4</span></div>
+        <div class="cell"><span class="n">②</span><span class="mt">8<i>x</i><span class="sup">2</span><i>y</i>÷(−2<i>x</i>)<span class="sup">2</span>×(−<i>xy</i>)</span></div>
+        <div class="cell"><span class="n">③</span><span class="mt"><span class="frac"><b>5<i>a</i>−1</b><b>2</b></span>−<span class="frac"><b>7<i>a</i>−5</b><b>6</b></span></span></div>
+      </div>
+      <div class="gap l"></div>
+      <div class="row">
+        <div class="cell" style="flex:1.5"><span class="n">④</span><span class="mt">(2<i>x</i>+1)(2<i>x</i>−1)−(<i>x</i>−3)<span class="sup">2</span></span></div>
+        <div class="cell"><span class="n">⑤</span><span class="mt">√<span class="rad">27</span>+<span class="frac"><b>18</b><b>√<span class="rad">3</span></b></span></span></div>
+      </div>
+      <div class="gap l"></div>
+      <div class="it"><span class="n">(2)</span><span class="b">次の方程式を解きなさい。</span></div>
+      <div class="row">
+        <div class="cell"><span class="n">①</span><span class="mt">4<i>x</i>+1=13−2<i>x</i></span></div>
+        <div class="cell"><span class="n">②</span><span class="mt"><span class="sys"><span class="br">{</span><span class="eq"><span>2<i>x</i>−5<i>y</i>=8</span><span><i>y</i>=3<i>x</i>+1</span></span></span></span></div>
+        <div class="cell"><span class="n">③</span><span class="mt">2(<i>x</i>+3)<span class="sup">2</span>=32</span></div>
+      </div>
+      <div class="gap l"></div>
+    </div>
+  </div>
+
+  <div class="big">
+    <div class="bn">2.</div>
+    <div class="bb">
+      <div class="t">次の問いに答えなさい。</div>
+      <div class="it"><span class="n">①</span><span class="b"><i>a</i>を負の数，<i>b</i>を正の数とするとき、式の値がいつも正の数になるものを、次のア〜エから選び、記号で答えなさい。</span></div>
+      <div class="row" style="margin-left:26px">
+        <div class="cell" style="flex:0 0 120px"><span class="n">ア</span><span class="mt"><i>a</i>+<i>b</i></span></div>
+        <div class="cell" style="flex:0 0 120px"><span class="n">イ</span><span class="mt"><i>a</i>−<i>b</i></span></div>
+        <div class="cell" style="flex:0 0 120px"><span class="n">ウ</span><span class="mt">−<i>a</i>+<i>b</i></span></div>
+        <div class="cell"><span class="n">エ</span><span class="mt">−<i>a</i>−<i>b</i></span></div>
+      </div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">②</span><span class="b">等式　<span class="mt"><i>S</i>=<span class="frac"><b>1</b><b>2</b></span><i>h</i>(<i>a</i>+<i>b</i>)</span>　を、<i>a</i>について解きなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">③</span><span class="b"><span class="mt"><i>a</i><span class="sup">2</span>−<i>b</i><span class="sup">2</span>+4<i>c</i><span class="sup">2</span>+4<i>ac</i></span>を因数分解しなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">④</span><span class="b"><span class="mt"><i>x</i>=√<span class="rad">5</span>+√<span class="rad">2</span>，<i>y</i>=√<span class="rad">5</span>−√<span class="rad">2</span></span>のとき、<span class="mt"><i>x</i><span class="sup">2</span>+<i>y</i><span class="sup">2</span>+2<i>xy</i></span>　の値を求めなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">⑤</span><span class="b"><span class="mt">√<span class="rad"><i>n</i><span class="sup">2</span>+15</span></span>　が整数となる正の整数<i>n</i>をすべて求めなさい。</span></div>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <div class="pno">− 1 −</div>
+</div>
+
+<!-- ============ 2ページ ============ -->
+<div class="sheet">
+  <div class="big">
+    <div class="bn">3.</div>
+    <div class="bb">
+      <div class="t">次の問いに答えなさい。</div>
+      <div class="it"><span class="n">①</span><span class="b">3点A<span class="mt">(−1, 7)</span>，B<span class="mt">(5, −5)</span>，C<span class="mt">(<i>a</i>, 1)</span>が一直線上にあるとき、<i>a</i>の値を求めなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">②</span><span class="b">面の数が6つである角錐の辺の数は何本ですか。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">③</span><span class="b">
+        <svg class="f figR" width="215" height="185" viewBox="0 0 235 200">
+          <polygon points="110,27 45.3,74 70,150 150,150 174.7,74"/>
+          <line x1="30" y1="76.1" x2="205" y2="51.6"/>
+          <line x1="45" y1="153.5" x2="200" y2="131.8"/>
+          <path d="M69.5,68.6 A26 26 0 0 1 71.3,76.9" class="thin"/>
+          <text x="110" y="20" text-anchor="middle">A</text>
+          <text x="36" y="72" text-anchor="end">B</text>
+          <text x="62" y="163">C</text>
+          <text x="150" y="164">D</text>
+          <text x="182" y="72">E</text>
+          <text x="146" y="52">F</text>
+          <text x="160" y="134">G</text>
+          <text x="210" y="50" class="iv">ℓ</text>
+          <text x="205" y="130" class="iv">m</text>
+          <text x="76" y="78" class="u">28°</text>
+        </svg>
+        右の図のような、正五角形ABCDEがあります。辺AE上に、点Fを∠ABF＝28°となるようにとり、点Bと点Fを通る直線をℓとします。<br>
+        また、点Cを通って直線ℓに平行な直線を<i>m</i>とし、直線<i>m</i>と辺DEとの交点をGとする。このとき、∠CGEの大きさを求めなさい。</span></div>
+      <div style="clear:both"></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">④</span><span class="b">
+        <svg class="f figR" width="190" height="150" viewBox="0 0 210 165">
+          <defs><pattern id="hat" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#333" stroke-width="1"/></pattern></defs>
+          <path d="M150,40 A80 80 0 0 0 70,120 Z" style="fill:url(#hat);stroke:none"/>
+          <path d="M150,40 A80 80 0 0 0 70,120"/>
+          <line x1="150" y1="40" x2="150" y2="120"/>
+          <line x1="70" y1="120" x2="150" y2="120"/>
+          <line x1="150" y1="40" x2="70" y2="120"/>
+          <path d="M138,120 L138,108 L150,108" class="thin"/>
+          <text x="156" y="38">A</text>
+          <text x="58" y="126">B</text>
+          <text x="156" y="130">O</text>
+          <text x="158" y="82" class="u">2cm</text>
+          <text x="110" y="140" class="u" text-anchor="middle">2cm</text>
+        </svg>
+        右の図は、2つの半径OA、OBと<span style="border-top:1px solid #111">AB</span>で囲まれたおうぎ形である。<br>
+        <span style="border-top:1px solid #111">AB</span>と弦ABで囲まれた斜線部分の図形を、半径OAを軸として1回転させてできる立体の体積を求めなさい。ただし、円周率はπとする。</span></div>
+      <div style="clear:both"></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">⑤</span><span class="b">
+        <svg class="f figR" width="170" height="150" viewBox="0 0 190 165">
+          <path d="M70,130 A50 14 0 0 0 170,130" class="thin"/>
+          <path d="M70,130 A50 14 0 0 1 170,130" class="d"/>
+          <line x1="120" y1="26" x2="70" y2="130"/>
+          <line x1="120" y1="26" x2="170" y2="130"/>
+          <line x1="120" y1="130" x2="170" y2="130" class="d"/>
+          <text x="152" y="76" class="u">6cm</text>
+          <text x="146" y="142" class="u">2cm</text>
+        </svg>
+        右の図のように、底面の半径が2cm、母線の長さが6cmの円錐がある。<br>
+        この円錐の展開図で、側面のおうぎ形の中心角の大きさを求めなさい。</span></div>
+      <div style="clear:both"></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">⑥</span><span class="b">大小2つのさいころを投げるとき、出た目の和が素数になる確率を求めなさい。<br>ただし、さいころは1から6までのどの目が出ることも同様に確からしいものとする。</span></div>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <div class="pno">− 2 −</div>
+</div>
+
+<!-- ============ 3ページ ============ -->
+<div class="sheet">
+  <div class="big">
+    <div class="bn">4.</div>
+    <div class="bb">
+      <svg class="f figR" width="330" height="205" viewBox="0 0 380 235">
+        <line x1="100" y1="26" x2="100" y2="200"/>
+        <line x1="100" y1="200" x2="362" y2="200"/>
+        <line x1="100" y1="55" x2="356" y2="55" class="dt"/>
+        <polyline points="100,200 199,55 298,200"/>
+        <polyline points="100,200 224,55 348,200"/>
+        <line x1="199" y1="200" x2="199" y2="55" class="dt"/>
+        <line x1="210" y1="200" x2="210" y2="71" class="dt"/>
+        <text x="104" y="22" class="iv">y<tspan class="u" font-style="normal">(m)</tspan></text>
+        <text x="352" y="214" class="iv">x<tspan class="u" font-style="normal">(分)</tspan></text>
+        <text x="96" y="214" class="u" text-anchor="middle">0</text>
+        <text x="197" y="214" class="u" text-anchor="middle">9</text>
+        <text x="214" y="214" class="u" text-anchor="middle">10</text>
+        <text x="94" y="205" class="u" text-anchor="end">(A地点)</text>
+        <text x="94" y="59" class="u" text-anchor="end">(B地点)</text>
+        <text x="112" y="104" class="u">あおいさん</text>
+        <text x="258" y="122" class="u">ゆうさん</text>
+        <text x="230" y="20" class="u">図</text>
+      </svg>
+      <div class="t">あおいさんとゆうさんは同じコースでランニングをしました。</div>
+      <div class="t" style="text-indent:1em">2人はA地点を同時に出発し、A地点とB地点を結ぶまっすぐな道を1往復しました。あおいさんは分速200mで走ったところ、先にB地点に到着し、すぐにA地点に向かって戻りました。<br>
+      A地点を出発してから<i>x</i>分後のあおいさんとゆうさんのA地点からの距離を<i>y</i>mとして、<i>x</i>と<i>y</i>の関係をグラフに表すと右図のようになりました。次の問いに答えなさい。<br>
+      ただし、あおいさんとゆうさんはそれぞれ一定の速さで走り続けたものとします。</div>
+      <div style="clear:both"></div>
+      <div class="it" style="margin-top:8px"><span class="n">①</span><span class="b">A地点とB地点との距離は何mですか。</span></div>
+      <div class="gap l"></div>
+      <div class="it"><span class="n">②</span><span class="b">出発してからちょうど10分後にあおいさんとゆうさんがすれちがった。<br>出発してから10分後の、あおいさんのA地点からの距離は何mですか。</span></div>
+      <div class="gap l"></div>
+      <div class="it"><span class="n">③</span><span class="b">ゆうさんがA地点に戻ったのは、あおいさんがA地点に戻ってから何分後ですか。</span></div>
+      <div class="gap l"></div>
+      <div class="it"><span class="n">④</span><span class="b">A地点を出発してから時間（分）を横軸に、あおいさんとゆうさんとの距離（m）を縦軸にとったグラフを、ア〜エから選び、記号で答えなさい。</span></div>
+      <svg class="f figC" width="700" height="118" viewBox="0 0 720 122">
+        <g>
+          <line x1="20" y1="14" x2="20" y2="76"/><line x1="20" y1="76" x2="112" y2="76"/>
+          <polyline points="20,76 50,28 102,76"/>
+          <line x1="50" y1="76" x2="50" y2="30" class="dt"/>
+          <text x="6" y="12" class="u">ア</text><text x="20" y="10" class="u">(m)</text>
+          <text x="16" y="90" class="u">0</text><text x="50" y="90" class="u" text-anchor="middle">10</text>
+          <text x="116" y="82" class="u">(分)</text>
+        </g>
+        <g transform="translate(180,0)">
+          <line x1="20" y1="14" x2="20" y2="76"/><line x1="20" y1="76" x2="112" y2="76"/>
+          <polyline points="20,76 44,48 50,76 58,34 78,20 104,76"/>
+          <text x="6" y="12" class="u">イ</text><text x="20" y="10" class="u">(m)</text>
+          <text x="16" y="90" class="u">0</text><text x="50" y="90" class="u" text-anchor="middle">10</text>
+          <text x="116" y="82" class="u">(分)</text>
+        </g>
+        <g transform="translate(360,0)">
+          <line x1="20" y1="14" x2="20" y2="76"/><line x1="20" y1="76" x2="112" y2="76"/>
+          <polyline points="20,76 42,46 54,76 74,28 98,76"/>
+          <text x="6" y="12" class="u">ウ</text><text x="20" y="10" class="u">(m)</text>
+          <text x="16" y="90" class="u">0</text><text x="54" y="90" class="u" text-anchor="middle">10</text>
+          <text x="116" y="82" class="u">(分)</text>
+        </g>
+        <g transform="translate(540,0)">
+          <line x1="20" y1="14" x2="20" y2="76"/><line x1="20" y1="76" x2="112" y2="76"/>
+          <polyline points="20,76 44,34 54,48 70,24 104,76"/>
+          <line x1="54" y1="76" x2="54" y2="48" class="dt"/>
+          <text x="6" y="12" class="u">エ</text><text x="20" y="10" class="u">(m)</text>
+          <text x="16" y="90" class="u">0</text><text x="54" y="90" class="u" text-anchor="middle">10</text>
+          <text x="116" y="82" class="u">(分)</text>
+        </g>
+      </svg>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <div class="pno">− 3 −</div>
+</div>
+
+<!-- ============ 4ページ ============ -->
+<div class="sheet">
+  <div class="big">
+    <div class="bn">5.</div>
+    <div class="bb">
+      <div class="t">図1は、あるクラスで実施された、国語，数学，英語の各50点満点であるテストについて、1班の12人の得点を箱ひげ図に表したものです。このとき、次の問いに答えなさい。<br>ただし、得点は整数とします。</div>
+      <svg class="f figC" width="420" height="180" viewBox="0 0 430 180" style="margin-top:2px">
+        <rect x="60" y="10" width="340" height="130" class="thin"/>
+        <g class="thin" stroke="#999">
+          <line x1="73.6" y1="10" x2="73.6" y2="140"/><line x1="87.2" y1="10" x2="87.2" y2="140"/>
+          <line x1="100.8" y1="10" x2="100.8" y2="140"/><line x1="114.4" y1="10" x2="114.4" y2="140"/>
+          <line x1="128" y1="10" x2="128" y2="140"/><line x1="141.6" y1="10" x2="141.6" y2="140"/>
+          <line x1="155.2" y1="10" x2="155.2" y2="140"/><line x1="168.8" y1="10" x2="168.8" y2="140"/>
+          <line x1="182.4" y1="10" x2="182.4" y2="140"/><line x1="196" y1="10" x2="196" y2="140"/>
+          <line x1="209.6" y1="10" x2="209.6" y2="140"/><line x1="223.2" y1="10" x2="223.2" y2="140"/>
+          <line x1="236.8" y1="10" x2="236.8" y2="140"/><line x1="250.4" y1="10" x2="250.4" y2="140"/>
+          <line x1="264" y1="10" x2="264" y2="140"/><line x1="277.6" y1="10" x2="277.6" y2="140"/>
+          <line x1="291.2" y1="10" x2="291.2" y2="140"/><line x1="304.8" y1="10" x2="304.8" y2="140"/>
+          <line x1="318.4" y1="10" x2="318.4" y2="140"/><line x1="332" y1="10" x2="332" y2="140"/>
+          <line x1="345.6" y1="10" x2="345.6" y2="140"/><line x1="359.2" y1="10" x2="359.2" y2="140"/>
+          <line x1="372.8" y1="10" x2="372.8" y2="140"/><line x1="386.4" y1="10" x2="386.4" y2="140"/>
+        </g>
+        <g>
+          <line x1="175.6" y1="35" x2="223.2" y2="35"/><line x1="291.2" y1="35" x2="386.4" y2="35"/>
+          <line x1="175.6" y1="26" x2="175.6" y2="44"/><line x1="386.4" y1="26" x2="386.4" y2="44"/>
+          <rect x="223.2" y="24" width="68" height="22"/><line x1="264" y1="24" x2="264" y2="46"/>
+        </g>
+        <g>
+          <line x1="128" y1="75" x2="182.4" y2="75"/><line x1="277.6" y1="75" x2="372.8" y2="75"/>
+          <line x1="128" y1="66" x2="128" y2="84"/><line x1="372.8" y1="66" x2="372.8" y2="84"/>
+          <rect x="182.4" y="64" width="95.2" height="22"/><line x1="236.8" y1="64" x2="236.8" y2="86"/>
+        </g>
+        <g>
+          <line x1="155.2" y1="115" x2="209.6" y2="115"/><line x1="291.2" y1="115" x2="372.8" y2="115"/>
+          <line x1="155.2" y1="106" x2="155.2" y2="124"/><line x1="372.8" y1="106" x2="372.8" y2="124"/>
+          <rect x="209.6" y="104" width="81.6" height="22"/><line x1="264" y1="104" x2="264" y2="126"/>
+        </g>
+        <text x="54" y="39" class="u" text-anchor="end">国語</text>
+        <text x="54" y="79" class="u" text-anchor="end">数学</text>
+        <text x="54" y="119" class="u" text-anchor="end">英語</text>
+        <g class="u">
+          <text x="60" y="155" text-anchor="middle">0</text><text x="128" y="155" text-anchor="middle">10</text>
+          <text x="196" y="155" text-anchor="middle">20</text><text x="264" y="155" text-anchor="middle">30</text>
+          <text x="332" y="155" text-anchor="middle">40</text><text x="400" y="155" text-anchor="middle">50</text>
+          <text x="410" y="155">(点)</text>
+        </g>
+        <text x="230" y="174" class="u" text-anchor="middle">図1</text>
+      </svg>
+      <div class="it"><span class="n">①</span><span class="b">図1について、四分位範囲が最小となる教科の四分位範囲を求めなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">②</span><span class="b">図1における、数学のテストの得点を表した箱ひげ図は、図2のデータをもとにして作成しています。このとき、<i>x</i>の値を求めなさい。</span></div>
+      <div style="text-align:center;margin:6px 0 0">
+        <div style="font-size:12.5px;font-weight:600">数学のテストの得点（点）</div>
+        <div class="databox">20，<i>x</i>，12，20，10，16，28，34，30，40，46，30</div>
+        <div class="u" style="font-size:11px;margin-top:2px">図2</div>
+      </div>
+      <div class="gap"></div>
+    </div>
+  </div>
+
+  <div class="big">
+    <div class="bn">6.</div>
+    <div class="bb">
+      <svg class="f figR" width="250" height="215" viewBox="0 0 300 260">
+        <line x1="30" y1="150" x2="288" y2="150"/>
+        <line x1="110" y1="26" x2="110" y2="250"/>
+        <path d="M11,142.7 C33,140.6 66,133.5 88,117 C99,108 104.5,60 104.5,18" class="thin" fill="none"/>
+        <path d="M117.7,244.6 C121,216 132,183 143,172 C165,163 198,158 275,154.4" class="thin" fill="none"/>
+        <line x1="93.5" y1="183" x2="152" y2="66"/>
+        <line x1="143" y1="84" x2="143" y2="172" class="d"/>
+        <line x1="110" y1="139" x2="143" y2="139" class="d"/>
+        <circle cx="44" cy="139" r="2.2" fill="#111"/>
+        <circle cx="143" cy="84" r="2.2" fill="#111"/>
+        <circle cx="143" cy="139" r="2.2" fill="#111"/>
+        <circle cx="143" cy="172" r="2.2" fill="#111"/>
+        <text x="36" y="132">A</text>
+        <text x="148" y="184">B</text>
+        <text x="130" y="80">C</text>
+        <text x="150" y="143">D</text>
+        <text x="100" y="166">O</text>
+        <text x="106" y="143" class="u" text-anchor="end">1</text>
+        <text x="140" y="166" class="u">3</text>
+        <text x="44" y="168" class="u" text-anchor="middle">−6</text>
+        <text x="284" y="164" class="iv">x</text>
+        <text x="114" y="30" class="iv">y</text>
+        <text x="156" y="60" class="u"><tspan class="iv">y</tspan>=<tspan class="iv">ax</tspan></text>
+        <g><text x="6" y="124" class="u"><tspan class="iv">y</tspan>=−</text>
+          <text x="38" y="118" class="u">6</text><line x1="35" y1="121" x2="45" y2="121" class="thin"/>
+          <text x="38" y="132" class="u iv">x</text></g>
+        <g><text x="196" y="196" class="u"><tspan class="iv">y</tspan>=−</text>
+          <text x="228" y="190" class="u">6</text><line x1="225" y1="193" x2="235" y2="193" class="thin"/>
+          <text x="228" y="204" class="u iv">x</text></g>
+      </svg>
+      <div class="t">右の図のように、関数<span class="mt"> <i>y</i>=−<span class="frac"><b>6</b><b><i>x</i></b></span> </span>のグラフ上に2点A、B、関数<span class="mt"> <i>y</i>=<i>ax</i> （<i>a</i>&gt;0）</span>のグラフ上に点Cがあり、点Aの<i>x</i>座標は−6、点B、Cの<i>x</i>座標は3である。また、点Dの座標は<span class="mt">(3, 1)</span>である。次の問いに答えなさい。</div>
+      <div class="it" style="margin-top:4px"><span class="n">①</span><span class="b"><i>a</i>＝2のとき、点Cの座標を求めなさい。</span></div>
+      <div class="gap s"></div>
+      <div class="it"><span class="n">②</span><span class="b">△ADCが二等辺三角形になるとき、<i>a</i>の値を求めなさい。</span></div>
+      <div class="gap s"></div>
+      <div class="it"><span class="n">③</span><span class="b">点Bを通り、<i>x</i>軸と平行な直線をℓとする。<i>a</i>＝4のとき、直線ℓを対称の軸として、直線<span class="mt"><i>y</i>=<i>ax</i></span>と線対称となる直線の式を求めなさい。</span></div>
+      <div style="clear:both"></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">④</span><span class="b">線分ABと<i>x</i>軸との交点をEとする。四角形AEDCの面積が△ABCの面積の<span class="frac"><b>1</b><b>2</b></span>倍になるとき、<i>a</i>の値を求めなさい。</span></div>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <div class="pno">− 4 −</div>
+</div>
+
+<!-- ============ 5ページ ============ -->
+<div class="sheet">
+  <div class="big">
+    <div class="bn">7.</div>
+    <div class="bb">
+      <svg class="f figR" width="180" height="72" viewBox="0 0 190 76">
+        <text x="10" y="14" class="u">白色のタイル</text>
+        <text x="104" y="14" class="u">灰色のタイル</text>
+        <rect x="30" y="24" width="22" height="22" class="wh"/>
+        <rect x="124" y="24" width="22" height="22" class="gr"/>
+        <rect x="124" y="24" width="22" height="22"/>
+        <text x="150" y="66" class="u">図1</text>
+      </svg>
+      <div class="t"><ruby>図<rt>ず</rt></ruby>1のような<ruby>同<rt>おな</rt></ruby>じ<ruby>大<rt>おお</rt></ruby>きさの<ruby>正方形<rt>せいほうけい</rt></ruby>の<ruby>白色<rt>しろいろ</rt></ruby>と<ruby>灰色<rt>はいいろ</rt></ruby>のタイルがある。</div>
+      <div class="t" style="text-indent:1em">この2<ruby>色<rt>しょく</rt></ruby>のタイルを<ruby>平面上<rt>へいめんじょう</rt></ruby>に<ruby>並<rt>なら</rt></ruby>べて<ruby>順番<rt>じゅんばん</rt></ruby>に正方形を<ruby>作<rt>つく</rt></ruby>る。<br>
+      1<ruby>回目<rt>かいめ</rt></ruby>の<ruby>作業<rt>さぎょう</rt></ruby>として、白色のタイルを1<ruby>枚<rt>まい</rt></ruby><ruby>置<rt>お</rt></ruby>き、1<ruby>番目<rt>ばんめ</rt></ruby>の正方形とする。<br>
+      2回目<ruby>以降<rt>いこう</rt></ruby>の作業は、<ruby>次<rt>つぎ</rt></ruby>のルールに<ruby>従<rt>したが</rt></ruby>ってタイルをすき<ruby>間<rt>ま</rt></ruby>なく並べ、<br>
+      <i>n</i>回目の作業<ruby>後<rt>ご</rt></ruby>にできた正方形を<i>n</i>番目の正方形とする。</div>
+      <div style="clear:both"></div>
+      <div class="rulebox">
+        <div class="hd">【ルール】</div>
+        <div class="li"><span class="n">①</span><span><i>n</i>が<ruby>偶数<rt>ぐうすう</rt></ruby>のとき、すでに正方形にならんでいるタイルの<ruby>下側<rt>したがわ</rt></ruby>に1<ruby>行<rt>ぎょう</rt></ruby>，<ruby>右側<rt>みぎがわ</rt></ruby>に1<ruby>列<rt>れつ</rt></ruby>，<ruby>再<rt>ふたた</rt></ruby>び正方形になるように<ruby>新<rt>あら</rt></ruby>たに灰色のタイルを並べる。</span></div>
+        <div class="li"><span class="n">②</span><span><i>n</i>が<ruby>奇数<rt>きすう</rt></ruby>のとき、すでに正方形に並んでいるタイルの<ruby>上側<rt>うえがわ</rt></ruby>に1行，<ruby>左側<rt>ひだりがわ</rt></ruby>に1列，再び正方形になるように新たに白色のタイルを並べる。</span></div>
+      </div>
+
+      <svg class="f figR" width="300" height="118" viewBox="0 0 310 122">
+        <g class="u">
+          <text x="37" y="18" text-anchor="middle">1番目</text>
+          <text x="98" y="18" text-anchor="middle">2番目</text>
+          <text x="169" y="18" text-anchor="middle">3番目</text>
+          <text x="252" y="18" text-anchor="middle">4番目</text>
+        </g>
+        <rect x="30" y="52" width="14" height="14" class="wh"/><rect x="30" y="52" width="14" height="14"/>
+        <polygon points="52,55 60,55 60,51 68,59 60,67 60,63 52,63" class="thin"/>
+        <g>
+          <rect x="84" y="45" width="14" height="14" class="wh"/><rect x="98" y="45" width="14" height="14" class="gr"/>
+          <rect x="84" y="59" width="14" height="14" class="gr"/><rect x="98" y="59" width="14" height="14" class="gr"/>
+          <rect x="84" y="45" width="28" height="28"/><line x1="98" y1="45" x2="98" y2="73"/><line x1="84" y1="59" x2="112" y2="59"/>
+        </g>
+        <polygon points="120,55 128,55 128,51 136,59 128,67 128,63 120,63" class="thin"/>
+        <g>
+          <rect x="148" y="38" width="42" height="42" class="wh"/>
+          <rect x="176" y="52" width="14" height="14" class="gr"/>
+          <rect x="162" y="66" width="14" height="14" class="gr"/><rect x="176" y="66" width="14" height="14" class="gr"/>
+          <rect x="148" y="38" width="42" height="42"/>
+          <line x1="162" y1="38" x2="162" y2="80"/><line x1="176" y1="38" x2="176" y2="80"/>
+          <line x1="148" y1="52" x2="190" y2="52"/><line x1="148" y1="66" x2="190" y2="66"/>
+        </g>
+        <polygon points="198,55 206,55 206,51 214,59 206,67 206,63 198,63" class="thin"/>
+        <g>
+          <rect x="224" y="31" width="56" height="56" class="wh"/>
+          <rect x="266" y="31" width="14" height="14" class="gr"/>
+          <rect x="252" y="45" width="28" height="14" class="gr"/>
+          <rect x="238" y="59" width="42" height="14" class="gr"/>
+          <rect x="224" y="73" width="56" height="14" class="gr"/>
+          <rect x="224" y="31" width="56" height="56"/>
+          <line x1="238" y1="31" x2="238" y2="87"/><line x1="252" y1="31" x2="252" y2="87"/><line x1="266" y1="31" x2="266" y2="87"/>
+          <line x1="224" y1="45" x2="280" y2="45"/><line x1="224" y1="59" x2="280" y2="59"/><line x1="224" y1="73" x2="280" y2="73"/>
+        </g>
+        <text x="169" y="108" class="u" text-anchor="middle">図2</text>
+      </svg>
+      <div class="t"><span style="margin-left:1em"></span>図2は、1回目から4回目までの作業後にできた正方形である。<ruby>例<rt>たと</rt></ruby>えば、4回目の作業後にできた4番目の正方形で<ruby>使用<rt>しよう</rt></ruby>するタイルの<ruby>枚数<rt>まいすう</rt></ruby>は白色のタイルが6枚であり、灰色のタイルの枚数が10枚である。次の問いに<ruby>答<rt>こた</rt></ruby>えなさい。</div>
+      <div style="clear:both"></div>
+
+      <div class="it" style="margin-top:6px"><span class="n">(1)</span><span class="b">5番目の正方形で使用する白色のタイルの枚数を<ruby>求<rt>もと</rt></ruby>めなさい。</span></div>
+      <div class="gap s"></div>
+      <div class="it"><span class="n">(2)</span><span class="b">次の<ruby>文章<rt>ぶんしょう</rt></ruby>は、<i>n</i>が偶数のとき、<i>n</i>番目の正方形で使用する白色のタイルと灰色のタイルのそれぞれの枚数について、<ruby>太郎<rt>たろう</rt></ruby>さんが<ruby>考<rt>かんが</rt></ruby>えたことをまとめたものである。㋐〜㋓に、<i>n</i>を<ruby>使<rt>つか</rt></ruby>った<ruby>式<rt>しき</rt></ruby>を、それぞれ<ruby>当<rt>あ</rt></ruby>てはまるようにかきなさい。</span></div>
+      <div class="rulebox" style="margin-top:6px">
+        <div style="text-indent:1em"><i>n</i>が偶数のとき、<i>n</i>番目の正方形で使用する灰色のタイルの枚数は、白色のタイルの枚数より<span class="sq"><em>㋐</em></span>枚<ruby>多<rt>おお</rt></ruby>い。</div>
+        <div style="text-indent:1em">したがって、<i>n</i>番目の正方形で使用する白色のタイルの枚数をT枚とすると、使用する灰色のタイルの枚数は、<span class="nw">（T＋<span class="sq"><em>㋐</em></span>）</span>枚と<ruby>表<rt>あらわ</rt></ruby>すことができる。</div>
+        <div style="text-indent:1em">また、<i>n</i>番目の正方形では、1<ruby>辺<rt>へん</rt></ruby>に<i>n</i>枚のタイルが並ぶので、使用する白色のタイルと灰色のタイルの枚数の<ruby>合計<rt>ごうけい</rt></ruby>は、<span class="sq"><em>㋑</em></span>枚である。</div>
+        <div style="text-indent:1em">これらのことから、<ruby>方程式<rt>ほうていしき</rt></ruby>をつくると、<span class="nw">T＋（T＋<span class="sq"><em>㋐</em></span>）＝<span class="sq"><em>㋑</em></span></span>となり、これをTについて<ruby>解<rt>と</rt></ruby>くと、T＝<span class="sq"><em>㋒</em></span>となる。</div>
+        <div style="text-indent:1em">よって、<i>n</i>が偶数のとき、<i>n</i>番目の正方形で使用する白色のタイルは<span class="sq"><em>㋒</em></span>枚，灰色のタイルは<span class="sq"><em>㋓</em></span>枚となる。</div>
+      </div>
+      <div class="gap s"></div>
+      <div class="it"><span class="n">(3)</span><span class="b">19番目の正方形で使用する白色のタイルの枚数を求めなさい。</span></div>
+      <div class="gap"></div>
+      <div class="it"><span class="n">(4)</span><span class="b">白色のタイルと灰色のタイルが150枚ずつ合計300枚あるとき、<ruby>何番目<rt>なんばんめ</rt></ruby>の正方形まで作ることができるか求めなさい。</span></div>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <div class="pno">− 5 −</div>
+</div>
